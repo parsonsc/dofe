@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<style>
+/* -------------------------------------
+		GLOBAL
+------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "verdana", arial, Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.6;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+	width: 100%!important;
+	height: 100%;
+}
+
+
+/* -------------------------------------
+		ELEMENTS
+------------------------------------- */
+a {
+	color: #ed2353;
+	text-decoration: none;
+}
+
+.btn-primary {
+	text-decoration: none;
+	color: #FFF;
+	background-color: #348eda;
+	border: solid #348eda;
+	border-width: 10px 20px;
+	line-height: 2;
+	font-weight: bold;
+	margin-right: 10px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 25px;
+}
+
+.btn-secondary {
+	text-decoration: none;
+	color: #FFF;
+	background-color: #aaa;
+	border: solid #aaa;
+	border-width: 10px 20px;
+	line-height: 2;
+	font-weight: bold;
+	margin-right: 10px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 25px;
+}
+
+.last {
+	margin-bottom: 0;
+}
+
+.first {
+	margin-top: 0;
+}
+
+.padding {
+	padding: 10px 0;
+}
+
+/* -------------------------------------
+		HEADER
+------------------------------------- */
+table.header-wrap {
+	width: 100%;	
+	clear: both!important;
+}
+
+.header-wrap .container p {
+	font-size: 12px;
+	color: #666;
+	
+}
+
+table.header-wrap a {
+	color: #999;
+}
+
+/* -------------------------------------
+		BODY
+------------------------------------- */
+table.body-wrap {
+	width: 600px;
+	padding: 20px;
+}
+
+table.body-wrap .container {
+	border: 1px solid #f0f0f0;
+}
+
+
+/* -------------------------------------
+		FOOTER
+------------------------------------- */
+table.footer-wrap {
+	width: 100%;	
+	clear: both!important;
+}
+
+.footer-wrap .container p {
+	font-size: 12px;
+	color: #666;
+	
+}
+
+table.footer-wrap a {
+	color: #999;
+}
+
+
+/* -------------------------------------
+		TYPOGRAPHY
+------------------------------------- */
+h1, h2, h3 {
+	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #000;
+	margin: 0px 0 10px;
+	line-height: 1.2;
+	font-weight: 200;
+}
+
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 28px;
+}
+h3 {
+	font-size: 22px;
+}
+
+p, ul, ol {
+	margin-bottom: 10px;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+ul li, ol li {
+	margin-left: 5px;
+	list-style-position: inside;
+}
+
+/* ---------------------------------------------------
+		RESPONSIVENESS
+		Nuke it from orbit. It's the only way to be sure.
+------------------------------------------------------ */
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+	display: block!important;
+	max-width: 600px!important;
+	width: 600px;
+	margin: 0 auto!important; /* makes it centered */
+	clear: both!important;
+}
+
+/* Set the padding on the td rather than the div for Outlook compatibility */
+.body-wrap .container {
+	padding: 0px;
+}
+.body-wrap .padding {
+	padding: 20px;
+}
+.body-wrap .padding_extra {
+	padding: 20px 70px;
+}
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+	max-width: 600px;
+	margin: 0 auto;
+	display: block;
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table {
+	width: 100%;
+}
+
+#outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%;  -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+
+/********************************/
+/*Mobile*/
+@media only screen and (max-width: 340px) {
+	table.body-wrap {
+		width: 100%;
+	}
+	.body-wrap .padding {
+		padding:  15px;
+	}
+	.body-wrap .padding_extra {
+		padding: 15px 15px;
+	}
+}
+
+</style>
+</head>
+
+<body bgcolor="#ffffff">
+
+<!-- header -->
+<table class="header-wrap">
+	<tr>
+		<td></td>
+		<td class="container">
+			
+			<!-- content -->
+			<div class="content">
+				<table>
+					<tr>
+						<td align="center">
+							<p><a href="#">View online</a></p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /content -->
+			
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- /header -->
+
+<!-- body -->
+<table class="body-wrap" bgcolor="#ffffff" width="600">
+	<tr>
+		<td></td>
+		<td class="container" bgcolor="#FFFFFF">
+
+			<!-- content -->
+			<div class="content">
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<a href="#">
+								<img src="images/logo.jpg" alt="DofE" width="175" height="81" title="DofE" />
+							</a>
+						</td>
+						
+						<!-- Social header -->
+						<td width="140" align="right">
+							<img src="images/follow.jpg" alt="Follow us" />
+						</td>
+						<td width="46" align="right">
+							<a href="#" target="_blank">
+								<img src="images/twitter_header.jpg" alt="Follow us on Twitter" title="Follow us on Twitter" />
+							</a>
+						</td>
+
+						<td width="45" align="right">
+							<a href="#" target="_blank">
+								<img src="images/facebook_header.jpg" alt="Like us on Facebook" title="Like us on Facebook" />
+							</a>
+						</td>
+					</tr>
+				</table>
+				
+				<!-- Hero banner -->
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<img src="images/hero_banner.jpg" alt="There's a challenger in you" />
+						</td>
+					</tr>
+				</table>
+
+				<!-- Welcome copy -->
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td class="padding">
+							<p><strong>Seize the day <code>Name</code>,</strong></p>
+							<p>Thanks for deciding to take the DofE Diamond Challenge. Whether you hike the highest mountain, run a marathon or learn Mandarin, you’ll be helping to transform young lives.</p>
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#e7ebf4" style="text-algin: center;">
+					<tr>
+						<td>
+							<img src="images/choose_challenge.jpg" alt="Choose your challenge" />
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="padding" style="text-algin: center;">
+							<p><strong>You can choose an adventure, skill or personal challenge – and that challenge can be anything at all.</strong></p>
+							<p>The rule is: <strong>If it challenges you, it counts.</strong></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="images/doe_11.jpg" alt="" />
+						</td>
+					</tr>					
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td class="padding_extra" align="center">
+							<img src="images/img_block.jpg" alt="Field notes" align="center" />
+						</td>
+					</tr>
+					<tr>
+						<td class="padding_extra">
+							<h2>Challenge kit</h2>
+							<p>If deciding on a challenge is a challenge in itself, don’t worry. Your exclusive Challenger Kit will be with you in the next month, including:</p>
+							<p><img src="images/dot.png" alt="Challenge list" style="float: left;"/> Your Challenge Companion – a beautifully-designed keepsake, packed with ideas to help you decide, plan, take part and remember your challenge forever.</p>
+							<p><img src="images/dot.png" alt="Challenge list" style="float: left;"/> Diamond Challenge T-shirt – to wear with pride as you take on your challenge.</p>
+						</td>
+					</tr>					
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<img src="images/underline.png" alt="" />
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7" style="text-algin: center;">
+					<tr>
+						<td class="padding_extra">
+							<img src="images/doe_challenge.jpg" alt="Choose your challenge" />
+						</td>
+					</tr>
+					<tr>
+						<td align="" class="padding_extra">
+							<h2>Social sparkle</h2>
+							<p>While you're waiting for your kit to arrive, start spreading the word. Tell your Facebook friends about the Diamond Challenge, sparkle on Twitter, shine on Instagram using #DofEChallenge – they might even have some challenge ideas to help you.</p>
+						</td>
+					</tr>									
+				</table>
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7" style="text-algin: center;">
+					<tr>
+						<td  class="padding_extra">
+							<table>
+								<tr>
+									<td align="left">
+										<a href="#" target="_blank">
+											<img src="images/twitter.jpg" alt="Share on Twitter" title="Share on Twitter" />
+										</a>
+									</td>
+
+									<td align="right">
+										<a href="#" target="_blank">
+											<img src="images/facebook.jpg" alt="Share on Facebook" title="Share on Twitter" />
+										</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<img src="images/underline.png" alt="" />
+						</td>
+					</tr>
+				</table>
+
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">					
+					<tr>
+						<td align="left" class="padding">
+							<p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin fringilla interdum. <a href="#" target="_blank" style="color: #ed2353; text-decoration: none;">Sed interdum a odio vulputate.</a></p>
+
+							<p style="font-size: 18px;"><strong>Seize the day <code>Name</code>,</strong></p>
+							<p style="font-size: 18px;"><strong>Signature</strong></p>
+						</td>
+					</tr>									
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<img src="images/underline.png" alt="" />
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">					
+					<tr>
+						<td align="left" class="padding">
+							<p><strong>Our Headline Diamond Partners</strong></p>
+							<p>2016 marks the Diamond Anniversary of the DofE. In this very special year,
+							meet the businesseshelping to change young people’s lives.</p>
+						</td>
+					</tr>												
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#f7f7f7">
+					<tr>
+						<td>
+							<img src="images/doe_13.jpg" alt="" />
+						</td>
+					</tr>
+				</table>
+
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#333333">
+					<tr>
+						<td><a href="#" target="_blank"><img src="images/doe_14.jpg" alt="DofE Diamond anniversary" title="DofE Diamond anniversary" /></a></td>
+						
+						<td width="68"><a href="#" target="_blank"><img src="images/doe_16.jpg" alt="DofE Diamond anniversary" title="DofE Diamond anniversary" /></a></td>
+						<td width="61"><a href="#" target="_blank"><img src="images/doe_17.jpg" alt="DofE Diamond anniversary" title="DofE Diamond anniversary" /></a></td>
+						<td width="62"><a href="#" target="_blank"><img src="images/doe_18.jpg" alt="DofE Diamond anniversary" title="DofE Diamond anniversary" /></a></td>
+						<td width="95"><a href="#" target="_blank"><img src="images/doe_19.jpg" alt="DofE Diamond anniversary" title="DofE Diamond anniversary" /></a></td>
+					</tr>
+				</table>
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#333333">
+					<tr>
+						<td>
+							<img src="images/doe_20.jpg" alt="" width="600" height="33" />
+						</td>
+					</tr>
+				</table>
+				<table border="0" cellpadding="0" cellspacing="0" bgcolor="#333333">
+					<tr>
+						<td class="padding">
+							<table border="0" cellpadding="0" cellspacing="0" style="font-size: 12px;">
+								<tr>
+									<td>
+										<a href="#" style="color: #ffffff;">&copy; 2015 DofE, is a registered charity No. 20XX</a>
+									</td>
+									<td>
+										<a href="#" style="color: #ffffff;">About the DofE</a>
+									</td>
+									<td>
+										<a href="#" style="color: #ffffff;">Terms and Conditions</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /content -->
+			
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- /body -->
+
+<!-- footer -->
+<table class="footer-wrap">
+	<tr>
+		<td></td>
+		<td class="container">
+			
+			<!-- content -->
+			<div class="content">
+				<table>
+					<tr>
+						<td align="center">
+							<p><unsubscribe>Unsubscribe</unsubscribe></p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /content -->
+			
+		</td>
+		<td></td>
+	</tr>
+</table>
+<!-- /footer -->
+
+</body>
+</html>

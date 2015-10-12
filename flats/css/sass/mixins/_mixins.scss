@@ -1,0 +1,56 @@
+@import "compass/css3/opacity";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+@import "colour_palette";
+
+@mixin respond-to($media, $min:"", $max:"") {
+  @if $media == mobile {
+    @media only screen and (max-width: 600px) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: 601px) and (max-width: 800px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 801px) { @content; }
+  }
+  @else if $media == not-mobile {
+    @media only screen and (min-width: 601px) { @content; }
+  }
+  @else if $media == defined {
+
+    @if $min == 0 {
+      @media only screen and (max-width: $max) { @content; }
+    }
+
+    @else if $max == 0 {
+      @media only screen and (min-width: $min) { @content; }
+    }
+
+    @else {
+      @media only screen and (min-width: $min) and (max-width: $max) { @content; }
+    }
+
+  }
+}
+
+
+// vars for fonts used on site
+$font_body_copy: Verdana, Geneva, arial, sans-serif;  
+$font_title: 'Manus', Verdana, Geneva, arial, sans-serif;
+
+
+
+@mixin site_cta {
+  background: $red;
+  padding: 15px 20px;
+  border-radius: 3px;color: $white;
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
+  @include transition(all 0.2s ease-in-out);
+  &:hover {
+    background: rgba(0,0,0,0.4);
+  }
+}

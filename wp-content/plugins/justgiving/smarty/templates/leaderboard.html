@@ -1,0 +1,87 @@
+
+<script type="text/javascript" src="{$pluginurl}/js/jquery.tablesorter.js"></script> 
+{literal}
+<script type="text/javascript">
+jQuery(document).ready(function($)
+    {
+        $("#myTable").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: $("#pager")}); 
+    } 
+); 
+</script>
+<!--
+#####################
+### foreach teams ###
+#####################
+
+    [dateCreated] => {sjondate}
+    [id] => {int}
+    [name] => {string}
+    [raisedSoFar] => {decimal}
+    [story] => {string}
+    [targetType] => {int}
+    [teamMembers] => Array
+        (
+            [1-n] => Class
+                (
+                    [id] => {int}
+                    [numberOfDonations] => {int}
+                    [pageShortName] => {string}
+                    [pageTitle] =>{string}
+                    [ref] => {string}
+                    [totalAmountRaised] => {decimal}
+                )
+        )
+
+    [teamShortName] => {string}
+    [teamTarget] => {int}
+    [teamType] => {int}
+    [owner] => {int}
+    [teamname] => {string}
+    [teamshortname] => {string}
+    [teamstory] => {string}
+    [teamtargettype] => {string}
+    [teamtarget] => {decimal}
+    [teamfbpage] => {url}
+    [teamtwpage] => {url}
+    [teamtype] => {enum}
+    [submittedtime] => {datetime Y-m-d H:i:s}
+    [lastmodified] => {datetime Y-m-d H:i:s}
+    [numMembers] => {int}
+-->
+<style type="text/css">
+#myTable { margin: 0 auto; font-size: 1.2em; margin-bottom: 15px;}
+#myTable thead { cursor: pointer; background: #c9dff0;}
+#myTable thead tr th { font-weight: bold; padding: 12px 30px; padding-left: 42px;}
+#myTable thead tr th span { padding-right: 20px; background-repeat: no-repeat; background-position: 100% 100%;}
+#myTable thead tr th.headerSortUp, #myTable thead tr th.headerSortDown { background: #acc8dd;}
+#myTable thead tr th.headerSortUp span { background-image: url('{/literal}{$pluginurl}{literal}/img/up-arrow.png'); }
+#myTable thead tr th.headerSortDown span { background-image: url('{/literal}{$pluginurl}{literal}/img/down-arrow.png');}
+#myTable tbody tr { color: #555; }
+#myTable tbody tr td { text-align: center; padding: 15px 10px; }
+#myTable tbody tr td.lalign { text-align: left; }
+</style>
+{/literal}
+<table id="myTable" class="tablesorter {literal}{sortlist: [[2,1]]}{/literal}"> 
+    <thead> 
+        <tr> 
+            <th><span>Name</span></th>  
+            <th><span>Members</span></th>  
+            <th><span>Raised so far</span></th> 
+            <th><span>Target</span></th> 
+            <th><span>Facebook</span></th> 
+            <th><span>Twitter</span></th> 
+        </tr> 
+    </thead> 
+    <tbody>
+{foreach from=$teams key=k item=v}
+        <tr>
+            <td>{$v.teamname}</td>
+            <td>{$v.numMembers}</td>
+            <td>{$v.raisedSoFar}</td>
+            <td>{$v.teamTarget}</td>
+            <td>{if $v.teamfbpage ne ''}<a href="{$v.teamfbpage}">Facebook</a>{/if}</td>
+            <td>{if $v.teamtwpage ne ''}<a href="{$v.teamtwpage}">Twitter</a>{/if}</td>
+        </tr>
+{/foreach} 
+    </tbody> 
+</table>                        

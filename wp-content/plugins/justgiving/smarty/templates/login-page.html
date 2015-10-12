@@ -1,0 +1,38 @@
+            <div class="main_content form_content" id="mainContent">       
+                <section class="">
+                    <div class="inner_content small_container">
+                        <form action="{$formurl}" method="post" class="user-forms" id="login_form" name="loginForm">
+                            <div class="form-item">
+                                <label for="user-name">Email address*</label>
+                                <input type="email" name="user-name" id="user-name" class="input-text{if $usernameerror ne ''} error{/if}" value="{$userName}"  validate="required:true" /> 
+                                <span class="error">{if $usernameerror ne ''}{$usernameerror}{/if}  </span>
+                            </div>
+
+                             <div class="form-item">
+                                <label for="password">Password*</label>
+                                <input type="password" name="password" id="password" class="input-text{if $passworderror ne ''} error{/if}"  validate="required:true" />      
+                                <span class="error">{if $passworderror ne ''}{$passworderror}{/if}</span>
+                            </div>
+                            
+                             <div class="form-item">
+                                <button title="Login" class="button submit site_cta" type="submit">Login</button>
+                                <input type="hidden" name="action" value="log-in" />
+                                <input type="hidden" name="button" value="{$submit}" />
+                                <input type="hidden" name="formName" value="login" />
+                                {$nonce}
+                            </div>
+                        </form>
+                        {if $forgotURL ne ''}
+                        <div class="forgot-pwd"><a href="{$forgotURL}">Oops! I forgot my password</a></div>
+                        {/if}
+                        
+                        {if $chooseURL ne ''}
+
+                        <div class="choose-account"><a href="{$chooseURL}">go back</a></div>
+
+                        {/if}                            
+                    </div>
+                </section>        
+            </div>
+
+

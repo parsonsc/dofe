@@ -1,0 +1,64 @@
+// DofE 
+// DofE GENERIC STYLES
+// PARTIALS/_about.SCSS
+
+.generic .main_content .inner_content {
+	max-width: 940px;
+	min-width: 940px
+}
+.generic .main_content header {
+	
+	background-image: url(../images/hp/news_line.png);
+	background-size: 940px;
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+	padding: 35px 0;
+	margin-bottom: 35px;
+}
+.generic .main_content h1,
+.generic .main_content h2 {
+	text-align: center;
+	font-size: 42px;
+	margin-top: 15px;
+}
+.generic .main_content p {
+	font-size: 16px;
+	line-height: 24px;
+}
+.generic .main_content a {
+	color: $red;
+}
+.generic .main_content a.site_cta {
+	color: $white;
+}
+
+.generic .main_content img {
+	margin: 15px auto;
+}
+
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	.about .main_content .inner_content {
+		max-width: 92%;
+		min-width: 92%;
+	}
+	.generic .main_content header {
+		background-size: 100%;
+	}
+
+	
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	.about .main_content .inner_content {
+		max-width: 92%;
+		min-width: 92%;
+	}
+	.generic .main_content header {
+		background-size: 100%;
+	}
+
+}

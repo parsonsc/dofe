@@ -1,0 +1,64 @@
+// DofE 
+// DofE RESOURCES STYLES
+
+.resources .main_content .inner_content {
+	max-width: 940px;
+	min-width: 940px;
+}
+.resources .resources_content header {
+	font-size: 18px;
+}
+
+.resources .resource_grid {
+	padding: 35px 0;
+	overflow: hidden;
+}
+.resources .resource_grid article.resource {
+	width: 300px;
+	display: block;
+	position: relative;
+	float: left;
+	margin: 0 13px 35px 0;
+}
+.resources .resource_grid article.resource h3 {
+	margin: 0;
+	padding: 10px 0;
+	font-family: $font_body_copy;
+}
+.resources .resource_grid article.resource a {
+	display: block;
+	color: $red;
+	font-size: 14px;
+	padding: 5px 0 5px;
+}
+.resources .resource_grid article.resource a i {
+	color: $doe_black;
+	padding: 0 10px 0 0;
+	font-size: 20px;
+}
+// TABLET STYLES
+@include respond-to(tablet) {
+	.resources .main_content .inner_content {
+		max-width: 92%;
+		min-width: 92%;
+	}	
+
+	.resources .resource_grid article.resource {
+	    width: 31%;
+	    margin-right: 2%;
+	}
+
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	.resources .main_content .inner_content {
+		max-width: 92%;
+		min-width: 92%;
+	}	
+
+	.resources .resource_grid article.resource {
+	    width: 100%;
+	}
+
+}

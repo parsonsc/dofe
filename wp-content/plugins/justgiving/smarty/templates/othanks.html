@@ -1,0 +1,21 @@
+<h2>Team</h2>
+<ul>
+{foreach name=row key=key item=value from=$team} 
+    <li>{$key}<ul>
+        {foreach name=sub key=sub_key item=sub from=$value} 
+                <li>{$sub}</li>
+        {/foreach} 
+    </ul></li>
+{/foreach}                    
+</ul>
+
+<h2>User {$user.email}</h2>
+<ul>
+{foreach name=row key=key item=value from=$user} 
+    <li>{$key}<ul>
+        {foreach name=sub key=sub_key item=sub from=$value} 
+                <li>{$sub}</li>
+        {/foreach} 
+    </ul></li>
+{/foreach}                    
+</ul>

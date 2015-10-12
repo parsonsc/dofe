@@ -1,0 +1,107 @@
+// DofE 
+// DofE CHALLENGE STYLES
+
+.challenge .challenge_content {
+	background-image: url(../images/challenge/challenge_bg.png);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.challenge .challenge_content header {
+	padding: 35px 0 115px;
+	width: 940px;
+	margin: 0 auto;
+}
+.challenge .challenge_block {
+	overflow: hidden;
+	margin-top: -80px
+}
+.challenge .challenge_block img {
+	float: left;
+	display: block;
+	width: 628px;
+	margin-right: 35px;
+}
+.challenge .challenge_block article {
+	float: left;
+	width: 430px;
+	display: block;
+	font-size: 16px;
+	margin-top: 150px;
+}
+.challenge .challenge_block article h2 {
+	font-size: 42px;
+	margin-bottom: 10px;
+}
+
+// PERSONAL
+.challenge .challenge_block.personal img {
+	float: right;
+	display: block;
+	width: 628px;
+	margin-left: 0;
+	margin-left: 35px;
+}
+
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+
+	.challenge .challenge_content header {
+		padding: 35px 0 35px;
+		width: 100%;
+	}
+	.challenge .challenge_block {
+		margin-top: 0;
+	}
+	.challenge .challenge_block img {
+		width: 50%;
+		margin-right: 5%;
+	}
+	.challenge .challenge_block article {
+		width: 45%;
+		font-size: 14px;
+		margin-top: 30px;
+	}
+	.challenge .challenge_block article h2 {
+		font-size: 38px;
+	}
+
+	// PERSONAL
+	.challenge .challenge_block.personal img {
+		float: right;
+		display: block;
+		width: 50%;
+		margin-left: 5%;
+		margin-left: 0;
+	}
+
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	.challenge .challenge_content header {
+		padding: 15px 0;
+		width: 100%;
+	}
+	.challenge .challenge_block {
+		margin-top: 0;
+	}
+	.challenge .challenge_block img {
+		width: 100%;
+		margin-right: 0;
+	}
+	.challenge .challenge_block article {
+		width: 100%;
+		font-size: 16px;
+		margin-top: 0;
+	}
+
+	// PERSONAL
+	.challenge .challenge_block.personal img {
+		width: 100%;
+		margin-left: 0;
+	}
+
+}

@@ -1,0 +1,132 @@
+tinymce.PluginManager.add('justgiving', function(editor) {
+    editor.addButton('justgiving', {
+        title : 'Justgiving Shortcodes',
+        cmd : 'justgiving',
+        image : '../wp-content/plugins/justgiving/admin/img/jg.gif'
+    }); 
+    
+    function showDialog(imageList) {
+		var win, data = {}, dom = editor.dom;
+		var width, height;    
+    editor.addCommand('justgiving', function() {
+
+                var form = jQuery('<style type="text/css">\
+                .choice{display:none}\
+                </style>\
+                <div id="justgiving-form"><div id="jgtype" class="form-table">\
+				<label for="justgiving-type">Type</label>\
+				<select name="type" id="justgiving-type" onchange="showparams()">\
+					<option value=""></option>\
+					<option value="login">Login</option>\
+					<option value="logout">Logout</option>\
+					<option value="register">Register</option>\
+					<option value="recover-password">Forgot Password</option>\
+					<option value="create-page">Create page</option>\
+					<option value="view-user">View user</option>\
+					<option value="paypal">Pay in via Paypal</option>\
+					<option value="justgiving">Pay in via justgiving</option>\
+					<option value="leaderboard">Leaderboard</option>\
+					<option value="thankyou">Thankyou</option>\
+				</select><br />\
+				<small>specify the type of shortcode</small>\
+			</div>\
+			<div id="jglogin" class="choice form-table">\
+				<th><label for="mygallery-id">Post ID</label></th>\
+				<td><input type="text" name="id" id="mygallery-id" value="" /><br />\
+				<small>specify the post ID. Leave blank if you want to use the current post.</small>\
+			</div>\
+			<div id="jglogout" class="choice form-table">\
+				<th><label for="mygallery-id">Post ID</label></th>\
+				<td><input type="text" name="id" id="mygallery-id" value="" /><br />\
+				<small>specify the post ID. Leave blank if you want to use the current post.</small>\
+			</div>\
+            <p class="submit">\
+                <input type="button" id="justgiving-submit" class="button-primary" value="Insert Justgiving shortcode" name="submit" />\
+            </p>\
+             </div>'); 
+                win = ed.windowManager.open({
+                    title: 'Insert JustGiving shortcode',
+                    height: 500,
+                    width: 800,
+                    resizable : true,
+                    html: form,
+                    onSubmit: onSubmitForm,
+                    buttons: [
+                        {
+                            text: 'Cancel',
+                            onclick: 'close'
+                        }
+                    ]
+                });
+                /*
+                var selected_text = ed.selection.getContent();
+                var return_text = '';
+                return_text = '<span class="dropcap">' + selected_text + '</span>';
+                ed.execCommand('mceInsertContent', 0, return_text);
+                */
+            });
+        },
+        showparams: function (){
+            $('#jgtype').hide();
+            $('js'+$('#justgiving-type option:selected').val()).show();            
+        },
+        onSubmitForm: function(){
+            var table = form.find('table');
+            form.appendTo('body').hide();
+            
+            // handles the click event of the submit button
+            form.find('#justgiving-submit').click(function(){
+                // defines the options and their default values
+                // again, this is not the most elegant way to do this
+                // but well, this gets the job done nonetheless
+                var options = { 
+                    'columns'    : '3',
+                    'id'         : '',
+                    'size'       : 'thumbnail',
+                    'orderby'    : 'menu_order ASC, ID ASC',
+                    'itemtag'    : 'dl',
+                    'icontag'    : 'dt',
+                    'captiontag' : 'dd',
+                    'link'       : '',
+                    'include'    : '',
+                    'exclude'    : '' 
+                    };
+                var shortcode = '[jg-'+ $('#justgiving-type option:selected').val();
+                
+                for( var index in options) {
+                    var value = table.find('#mygallery-' + index).val();
+                    
+                    // attaches the attribute to the shortcode only if it's different from the default value
+                    if ( value !== options[index] )
+                        shortcode += ' ' + index + '="' + value + '"';
+                }
+                
+                shortcode += ']';
+                
+                // inserts the shortcode into the active editor
+                tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
+                
+                // closes Thickbox
+                tb_remove();
+            });
+        },        
+        getInfo : function() {
+            return {
+                longname : 'Justgiving Button',
+                author : 'Dave Gurney',
+                authorurl : 'http://www.thegoodagency.co.uk',
+                version : "0.1"
+            };
+        }        
+    });
+
+    // registers the plugin. DON'T MISS THIS STEP!!!
+    tinymce.PluginManager.add('justgiving', tinymce.plugins.justgiving);
+    
+	jQuery(function(){
+		// creates a form to be displayed everytime the button is clicked
+		// you should achieve this using AJAX instead of direct html code like this
+	
+       
+	});
+})();

@@ -1,0 +1,33 @@
+<div class="logIn-box"> 
+    <h3>Already got a JustGiving Account?<br />Sweet! Log in here.</h3>
+	<form action="{$formurl}" method="post" class="user-forms" id="login_form" name="loginForm">
+	<div class="container login water-bg water-line-top">
+		<div class="col-xs-* col-xs-12">
+            <div class="form-item input-row">
+                <label for="user-name">Email address*</label>
+                <input type="email" name="user-name" id="user-name" class="input-text" value="{$userName}"  validate="required:true" />                
+            </div>
+            <div class="form-item input-row">
+                <label for="password">Password*</label>
+                <input type="password" name="password" id="password" class="input-text"  validate="required:true" />                
+            </div>        
+        </div>
+        <div class="container login">
+            <div class="row">
+                <div class="col-xs-* col-xs-12 fieldset-submit water-line-bottom"> 
+                    <div class="form-item input-row centered">        
+                        <button title="Login" class="button submit siteCTA" type="submit">Login</button>
+                        <input type="hidden" name="action" value="log-in" />
+                        <input type="hidden" name="button" value="{$submit}" />
+                        <input type="hidden" name="formName" value="login" />
+                        {$nonce}
+                    </div>
+                </div>
+            </div>
+        </div>                {if $passworderror ne '' or $usernameerror ne '' }                <p class="required_text error-text">Some fields are invalid</p>                {/if}        
+        {if $forgotURL ne ''}
+        <div class="forgot-pwd"><a href="{$forgotURL}">Oops! I forgot my password</a></div>
+        {/if}
+    </div>    
+	</form>
+</div> 

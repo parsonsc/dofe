@@ -1,0 +1,78 @@
+// DofE 
+// DofE CASE STUDIES STYLES
+
+.case_sudies_content {
+	background-image: url(../images/case/case_bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.case_sudies_content .inner_content {
+	max-width: 980px;
+}
+
+.case_study {
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 40px;
+}
+.case_study article {
+	padding: 30px 20px;
+	background: $white;
+	width: 370px;
+	border-radius: 3px;
+	float: left;
+	position: absolute;
+	top: 40px;
+	left: 20px;
+}
+.case_study article h2 {
+	font-size: 42px;
+	margin-bottom: 10px;
+}
+
+// CASE 02
+.case_02 article {
+	right: 20px;
+	left: auto;
+}
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	.case_sudies_content .inner_content {
+		max-width: 96%;
+	}
+
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	.case_sudies_content {
+		background-image: url(../images/case/case_bg_mob.jpg);
+		background-size: 100%;
+	}
+	.case_sudies_content .inner_content {
+		max-width: 92%;
+	}
+	.case_study {
+		margin-bottom: 30px;
+	}
+	.case_study article {
+		padding: 20px 4%;
+		background: $white;
+		width: 92%;
+		border-radius: 0px;
+		position: relative;
+		top: auto;
+		left: auto;
+		overflow: hidden;
+	}
+	.case_study article h2 {
+		font-size: 38px;
+	}
+
+	// CASE 02
+	.case_02 article {
+		right: auto;
+	}
+
+}

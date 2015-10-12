@@ -1,0 +1,330 @@
+// DofE
+// HP
+
+
+.hp_content {
+	background-image: url(../images/hp/challenge_bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+.hp_content h2 {
+	font-size: 62px;
+	margin-bottom: 0;
+}
+
+// CHALLENGES
+.challenges {
+	text-align: center;
+}
+.challenges header {
+	margin-bottom: 35px;
+}
+.challenge_container {
+	width: 33%; 
+	float: left;
+}
+article .challenge {
+    position: relative;
+    width: 100%;
+    height: 355px;
+    padding: 10px 0;
+    float: left;
+    overflow: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+article .challenge h3 {
+	position: absolute;
+    top: 35%;
+    text-align: center;
+    width: 100%;
+    color: $white;
+    font-size: 82px;
+}
+
+article .challenge .diamond::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+article .challenge .challenge_diamond_bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.challenge_container footer {
+    position: relative;
+    text-align: center;
+    width: 90%;
+    display: block;
+    clear: both;
+    overflow: hidden;
+    margin: 0 auto;
+    font-size: 16px;
+}
+.challenge_container footer h4 {
+	font-family: $font_body_copy;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+// ADVENTURE  
+article .adventure .challenge_diamond_bg {
+	background: url(../images/hp/adventure_bg.png) no-repeat 0 0;
+	background-size: 100%;
+}
+article .adventure .diamond::before {
+    background: url(../images/hp/adventure.png) no-repeat 0 0;
+    background-size: 100%;
+}
+
+// PERSONAL
+article .personal .challenge_diamond_bg {
+	background: url(../images/hp/personal_bg.png) no-repeat 0 0;
+	background-size: 100%;
+}
+article .personal .diamond::before {
+    background: url(../images/hp/personal.png) no-repeat 0 0;
+    background-size: 100%;
+}
+
+// SKILL
+article .skill .challenge_diamond_bg {
+	background: url(../images/hp/skill_bg.png) no-repeat 0 0;
+	background-size: 100%;
+}
+article .skill .diamond::before {
+    background: url(../images/hp/skill.png) no-repeat 0 0;
+    background-size: 100%;
+}
+.challenges a.site_cta {
+	clear: both;
+	margin: 25px 0;
+}
+
+
+// CHALLENGE VIDEO
+.challenge_video {
+	text-align: center;
+	background-image: url(../images/hp/watch_this.png);
+	background-size: 130px;
+	background-repeat: no-repeat;
+	background-position: 18% 17%;
+}
+.challenge_video header {
+	padding-bottom: 25px;
+}
+.challenge_video h2 {
+	font-size: 42px;
+}
+.challenge_video .inner_content {
+	max-width: 960px;
+}
+
+
+// RESOURCE BLOCK
+.resource_blocks ul li {
+	width: 32%;
+    display: block;
+    float: left;
+    margin-right: 2%;
+    position: relative;
+}
+.resource_blocks ul li:last-child {
+	margin-right: 0;
+}
+.resource_blocks ul li  span {
+	font-size: 70px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	color: $white;
+	font-family: $font_title;
+	vertical-align: text-top;
+}
+.resource_blocks ul li article h4 {
+	font-family: $font_body_copy;
+}
+
+
+// LATEST NEWS
+.hp .latest_news {
+	background-image: url(../images/hp/news_bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0 35px;
+	text-align: center;
+}
+.hp .latest_news header.news_header {
+	background-image: url(../images/hp/news_line.png);
+	background-size: 980px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    padding: 35px 0;
+}
+.hp .latest_news .news_grid {
+	width: 940px;
+	margin: 0 auto;
+	clear: both;
+}
+.hp .latest_news a.site_cta {
+	display: inline-block;
+	margin: 25px auto 0;
+}
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	
+	// CHALLENGES
+	.challenge_container {
+		width: 100%; 
+	}
+
+	article .challenge {
+	    position: relative;
+	    width: 49%;
+	    height: 355px;
+	}
+	article .personal {
+	    float: right
+	}
+
+
+	article .challenge h3 {
+		position: absolute;
+	    top: 35%;
+	    text-align: center;
+	    width: 100%;
+	    color: $white;
+	    font-size: 82px;
+	}
+
+	article .challenge .diamond::before {
+	    content: '';
+	    display: block;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	}
+	article .challenge .challenge_diamond_bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.challenge_container footer {
+	    width: 51%;
+	    clear: none;
+	    font-size: 16px;
+	    float: right;
+	}
+	.challenge_container footer h4 {
+		font-family: $font_body_copy;
+		font-size: 18px;
+		text-transform: uppercase;
+	}
+
+	// CHALLENGE VIDEO
+	.challenge_video {
+		background-image: none;
+	}
+	.challenge_video .inner_content {
+		max-width: 96%;
+	}
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	
+	// CHALLENGES
+	.challenge_container {
+		width: 100%; 
+	}
+	.challenges header {
+		margin-bottom: 25px;
+	}
+	article .challenge {
+	    width: 100%;
+	    height: 355px;
+	}
+	article .challenge h3 {
+	    top: 25%;
+	    font-size: 60px;
+	}
+
+	article .challenge .diamond::before {
+	    width: 100%;
+	    height: 100%;
+	    background-size: 100%;
+	}
+	article .challenge .challenge_diamond_bg {
+		width: 100%;
+		height: 100%;
+		background-size: 100%;
+	}
+
+	// CHALLENGE VIDEO
+	.challenge_video {
+		background-image: none;
+	}
+	.challenge_video h2 {
+		font-size: 26px;
+	}
+	.challenge_video .inner_content {
+		max-width: 96%;
+	}
+
+	// RESOURCE BLOCK
+	.resource_blocks ul li {
+		width: 100%;
+	    margin-right: 0;
+	    margin-bottom: 25px;
+	}
+	.resource_blocks ul li  span {
+		font-size: 70px;
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 0;
+		left: 0;
+		color: $white;
+		font-family: $font_title;
+		vertical-align: text-top;
+	}
+
+	// LATEST NEWS
+	.latest_news {
+		background-image: url(../images/hp/news_bg.jpg);
+		background-position: 0 35px;
+	}
+	.latest_news .news_grid {
+		width: 100%;
+	}
+	.latest_news .news_grid ul li {
+		margin: 10px 0;
+		width: 50%;
+	}
+	.latest_news .news_grid ul li:first-child,
+	.latest_news .news_grid ul li:nth-child(3) {
+		margin-right: 2%;
+	}
+
+	.latest_news .news_grid ul li header img {
+		width: 18px;
+	}
+}

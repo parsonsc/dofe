@@ -1,0 +1,284 @@
+    <section class="create_account">
+        <header class="sign_up_banner">
+            <div class="inner_content">
+
+            </div>
+        </header>
+        <div class="inner_content">
+            <!-- <p>You're logged in to JustGiving as {$Session.email}. Now create your page</p> -->
+            <p class="log_out">Not {$Session.email}? Click <a href="{php} echo get_permalink($this->get_template_vars('logout'));{/php}">here</a> to logout.</p>
+
+            <form enctype="multipart/form-data" method="post"
+                  id="createpage" class="create_page user-forms " name="createPage" action="{$formurl}">
+
+                <div class="container water-bg water-line-top createpage">
+                    <div class="col-xs-12">
+                        <!--div class="form-item input-row">
+                            <label for="selectUni">Select Your Uni <span class="hint" data-title="This is the title that will appear at the top of your JustGiving fundraising page"></span></label>
+                            <div class="selectStyle">
+                                <select type="text" name="jointeam" id="team" class="input-text border styled2 {if $Errors.jointeam.message ne ''}error{/if}" validate="required:true" >
+                                {foreach from=$teams key=k item=v}
+                                   <option value="{$k}" {if $Post.jointeam eq $k and $Post.jointeam ne ''} selected="selected"{/if}>{$v.label}</option>
+                                {/foreach}                        
+                                </select>                  
+                            </div>
+                        </div -->
+                        <div class="form-item input-row page_name">
+                            <label for="pageshortname" class="jg-placeholder-title">Page short name<span class="hint" data-title="This is the address of your JustGiving fundraising page ie www.justgiving.com/johnsmith"></span>
+                            <p>This is the unique web address of your Just Giving fundraising page ie www.justgiving.com/johnsbrilliantpage</p></label>
+                            <!-- <label class="jg-placeholder" for="pageshortname">www.justgiving.com/</label> -->
+
+                            <input {if $suggestions|@count gt 0 and $errorshortname ne ''}readonly="readonly" name="rpageshortname"{else}name="pageshortname"{/if} type="text"  id="pageshortname" value="{$Post.pageshortname}" class="input-text jg-placeholder-input"  validate="required:true" placeholder=""/>
+                            <span class="error">{if $Errors.pageshortname.message ne ''}{$Errors.pageshortname.message}{/if} {if $Errors.shortname.message ne ''}{$Errors.shortname.message}{/if}</span>
+                        </div>
+                        {if $suggestions|@count gt 0 and $errorshortname ne ''}
+                        <div class="form-item input-row url-suggest">
+                            <label for="rpageshortname" class="pageSuggestionTitle">Suggested alternative names:</label> 
+                            <div class="url-alternatives">          
+                                <select id="rpageshortname" name="pageshortname" size="4" class="pageSuggestgion border {if $Errors.pageshortname.message ne '' or $Errors.shortname.message ne ''}error{/if}" validate="required:true">
+                                    <option class="show_mobile" value="" data-teamstory="" disabled selected>Suggested alternative names</option>
+                                    {foreach from=$suggestions item=v}
+                                    <option  value="{$v.label}" {if $Post.pageshortname eq $v.label and $Post.pageshortname ne ''} selected="selected"{/if} >{$v.label}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        {/if}
+                        
+                        <div class="form-item input-row page_title">
+                            <label for="pagetitle">Page title <span class="hint" data-title="This is the title that will appear at the top of your JustGiving fundraising page"></span>
+                            <p>This is the page title that people will see when they go to your Just Giving fundraising page ie John’s Brilliant Page</p></label>
+                            <input type="text" name="pagetitle" id="pagetitle" value="{$Post.pagetitle}" class="input-text {if $Errors.pagetitle.message ne ''}error{/if}"  placeholder="" validate="required:true" />
+                            <span class="error">{if $Errors.pagetitle.message ne ''}{$Errors.pagetitle.message}{/if}</span>
+                        </div>
+
+                        <h4>Event dates</h4>
+                        <div class="form-item input-row">
+                            <label for="doe">Start date <span class="hint" data-title="What is the date of your event"></span></label>
+                            <div class="selectStyle">
+                            <input type="date"  name="eventstart" id="doe" min="{$maxdate}" class="input-text border styled2 {if $Errors.eventstart.message ne ''}error{/if}" validate="required:true" value="{$Post.eventstart}" />
+                            </div>
+                            <span class="error">{if $Errors.eventstart.message ne ''}{$Errors.eventstart.message}{/if}</span>
+                        </div>      
+                        <div class="form-item input-row">
+                            <label for="eoe">End date <span class="hint" data-title="What is the date of your event"></span></label>
+                            <div class="selectStyle">
+                            <input type="date"  name="eventend" id="eoe" min="{$maxdate}" class="input-text border styled2 {if $Errors.eventend.message ne ''}error{/if}" validate="required:true" value="{$Post.eventend}" />
+                            </div>
+                            <span class="error">{if $Errors.eventend.message ne ''}{$Errors.eventend.message}{/if}</span>
+                        </div>                          
+
+                        <div class="form-item input-row custom-select">
+                            <label for="heardAbout">Where did you hear about us?</label>
+                            <div class="selectStyle">                                
+                                <select type="text" name="heardabout" id="heardAbout" class="input-text border styled2 {if $Errors.heardabout.message ne ''}error{/if}" >
+                                    <option value="default" disabled="disabled" default selected="selected">Please select one</option>
+
+                                    <option value="0" {if $Post.heardabout eq 0 and $Post.heardabout ne ''} selected="selected"{/if}>Google</option>
+                                    <option value="1" {if $Post.heardabout eq 1 and $Post.heardabout ne ''} selected="selected"{/if}>YouTube</option>
+                                    <option value="2" {if $Post.heardabout eq 2 and $Post.heardabout ne ''} selected="selected"{/if}>Facebook</option>
+                                    <option value="3" {if $Post.heardabout eq 3 and $Post.heardabout ne ''} selected="selected"{/if}>Twitter</option>
+                                    <option value="4" {if $Post.heardabout eq 4 and $Post.heardabout ne ''} selected="selected"{/if}>Text message</option>
+                                    <option value="5" {if $Post.heardabout eq 5 and $Post.heardabout ne ''} selected="selected"{/if}>Email</option>
+                                    <option value="6" {if $Post.heardabout eq 6 and $Post.heardabout ne ''} selected="selected"{/if}>Tube advert</option>
+                                    <option value="7" {if $Post.heardabout eq 7 and $Post.heardabout ne ''} selected="selected"{/if}>Weight Watchers magazine</option>
+                                    <option value="8" {if $Post.heardabout eq 8 and $Post.heardabout ne ''} selected="selected"{/if}>Flyer</option>
+                                    <option value="9" {if $Post.heardabout eq 9 and $Post.heardabout ne ''} selected="selected"{/if}>Work colleague</option>
+                                    <option value="a" {if $Post.heardabout eq 'a' and $Post.heardabout ne ''} selected="selected"{/if}>Friend / family</option>
+                                    <option value="b" {if $Post.heardabout eq 'b' and $Post.heardabout ne ''} selected="selected"{/if}>Slipway Slide</option>
+                                    <option value="c" {if $Post.heardabout eq 'c' and $Post.heardabout ne ''} selected="selected"{/if}>PR event</option>
+                                    <option value="d" {if $Post.heardabout eq 'd' and $Post.heardabout ne ''} selected="selected"{/if}>Newspaper article</option>
+                                    <option value="e" {if $Post.heardabout eq 'e' and $Post.heardabout ne ''} selected="selected"{/if}>Celebrity ambassador</option>
+                                    <option value="g" {if $Post.heardabout eq 'g' and $Post.heardabout ne ''} selected="selected"{/if}>Billboard in Cardiff</option> 
+                                    <option value="f" {if $Post.heardabout eq 'f' and $Post.heardabout ne ''} selected="selected"{/if}>Other</option>                               
+                                </select>               
+                            </div>
+                            <span class="error">{if $Errors.heardabout.message ne ''}{$Errors.heardabout.message}{/if}</span>
+                        </div>  
+
+                        <hr />
+                        <div class="form-item input-row">
+                            <label for="dob">What is your date of birth? <span class="hint" data-title="What is your date of birth"></span></label>
+                            <div class="selectStyle">
+                            <input type="date"  name="dob" id="dob" max="{$maxdate}" class="input-text border styled2 {if $Errors.dob.message ne ''}error{/if}" validate="required:true" value="{$Post.dob}" />
+                            </div>
+                            <span class="error">{if $Errors.dob.message ne ''}{$Errors.dob.message}{/if}</span>
+                        </div>
+                                                  
+                        <div class="form-item input-row custom-select">
+                            <label for="work">Where do you work?</label>
+                            <div class="">                                    
+                               <input type="text" name="work" id="work" maxlength="9" class="input-text border  {if $Errors.work.message ne ''}error{/if}"   value="{$Post.work}" />
+                                <aside class="optional">
+                                    (Optional)
+                                </aside>                  
+                            </div>
+                        </div>                            
+
+                        <div class="form-item input-row custom-select">
+                            <label for="worktown">town</label>
+                            <div class="">                                    
+                               <input type="text" name="worktown" id="worktown" maxlength="9" class="input-text border  {if $Errors.worktown.message ne ''}error{/if}"   value="{$Post.worktown}" />
+                                <aside class="optional">
+                                    (Optional)
+                                </aside>                  
+                            </div>
+                        </div>
+                        
+                        <div class="form-item input-row custom-select">
+                            <label for="workcountry">country</label>
+                            <div class="">                                    
+                               <input type="text" name="workcountry" id="workcountry" maxlength="9" class="input-text border  {if $Errors.workcountry.message ne ''}error{/if}"   value="{$Post.workcountry}" />
+                                <aside class="optional">
+                                    (Optional)
+                                </aside>                  
+                            </div>
+                        </div>  
+
+                        <div class="form-item input-row custom-select">
+                            <label for="workpostcode">postcode</label>
+                            <div class="">                                    
+                               <input type="text" name="workpostcode" id="workpostcode" maxlength="9" class="input-text border  {if $Errors.workpostcode.message ne ''}error{/if}"   value="{$Post.workpostcode}" />
+                                <aside class="optional">
+                                    (Optional)
+                                </aside>
+                            </div>
+                        </div>                         
+                        <hr />
+                        <div class="form-item input-row custom-select">
+                            <label for="workwhere">Where do you work?</label>
+                            <div class="selectStyle">                                
+                                <select type="text" name="workwhere" id="workwhere" class="input-text border styled2 {if $Errors.workwhere.message ne ''}error{/if}" >
+                                    <option value="default" disabled="disabled" default selected="selected">Please select one</option>
+
+                                    <option value="0" {if $Post.workwhere eq 0 and $Post.workwhere ne ''} selected="selected"{/if}>Google</option>
+                                    <option value="1" {if $Post.workwhere eq 1 and $Post.workwhere ne ''} selected="selected"{/if}>YouTube</option>
+                                    <option value="2" {if $Post.workwhere eq 2 and $Post.workwhere ne ''} selected="selected"{/if}>Facebook</option>
+                                                                
+                                </select>               
+                            </div>
+                            <span class="error">{if $Errors.workwhere.message ne ''}{$Errors.workwhere.message}{/if}</span>
+                        </div> 
+                        <div class="form-item input-row custom-select">
+                            <label for="dofereln">What is your relationship with DofE?</label>
+                            <div class="selectStyle">                                
+                                <select type="text" name="dofereln" id="dofereln" class="input-text border styled2 {if $Errors.dofereln.message ne ''}error{/if}" >
+                                    <option value="default" disabled="disabled" default selected="selected">Please select one</option>
+
+                                    <option value="0" {if $Post.dofereln eq 0 and $Post.dofereln ne ''} selected="selected"{/if}>Google</option>
+                                    <option value="1" {if $Post.dofereln eq 1 and $Post.dofereln ne ''} selected="selected"{/if}>YouTube</option>
+                                    <option value="2" {if $Post.dofereln eq 2 and $Post.dofereln ne ''} selected="selected"{/if}>Facebook</option>
+                                                                
+                                </select>               
+                            </div>
+                            <span class="error">{if $Errors.dofereln.message ne ''}{$Errors.dofereln.message}{/if}</span>
+                        </div>                         
+                        <div class="form-item input-row custom-select">
+                            <label for="dofegold">Are you a bronze, silver of gold medalist?</label>
+                            <div class="selectStyle">                                
+                                <select type="text" name="dofegold" id="dofegold" class="input-text border styled2 {if $Errors.dofegold.message ne ''}error{/if}" >
+                                    <option value="default" disabled="disabled" default selected="selected">Please select one</option>
+
+                                    <option value="0" {if $Post.dofegold eq 0 and $Post.dofegold ne ''} selected="selected"{/if}>Bronze</option>
+                                    <option value="1" {if $Post.dofegold eq 1 and $Post.dofegold ne ''} selected="selected"{/if}>Silver</option>
+                                    <option value="2" {if $Post.dofegold eq 2 and $Post.dofegold ne ''} selected="selected"{/if}>Gold</option>
+                                                                
+                                </select>               
+                            </div>
+                            <span class="error">{if $Errors.dofegold.message ne ''}{$Errors.dofegold.message}{/if}</span>
+                        </div> 
+                        <div class="form-item input-row custom-select">
+                            <label for="dofeevent">Which of the 3 event types will you be doing?</label>
+                            <div class="selectStyle">                                
+                                <select type="text" name="dofeevent" id="dofeevent" class="input-text border styled2 {if $Errors.dofeevent.message ne ''}error{/if}" >
+                                    <option value="default" disabled="disabled" default selected="selected">Please select one</option>
+
+                                    <option value="0" {if $Post.dofeevent eq 0 and $Post.dofeevent ne ''} selected="selected"{/if}>Bronze</option>
+                                    <option value="1" {if $Post.dofeevent eq 1 and $Post.dofeevent ne ''} selected="selected"{/if}>Silver</option>
+                                    <option value="2" {if $Post.dofeevent eq 2 and $Post.dofeevent ne ''} selected="selected"{/if}>Gold</option>
+                                                                
+                                </select>               
+                            </div>
+                            <span class="error">{if $Errors.dofeevent.message ne ''}{$Errors.dofeevent.message}{/if}</span>
+                        </div>   
+                        <hr />
+                        <div class="form-item input-row customCheckbox">
+                            <label for="">Select shirt size</label>
+                            <input type="radio" name="tshirt" class="checkboxLabel main_street_input" id="tshirtyes" value="xs"{if $Post.tshirt eq 'xs'} checked="checked"{/if}  />
+                            <label for="tshirtyes" class="radio_input"><span></span>XS</label> <!-- 1 added at the end for test -->
+                            <input type="radio" name="tshirt" class="checkboxLabel main_street_input" id="tshirts" value="s"{if $Post.tshirt eq 's'} checked="checked"{/if}  />
+                            <label for="tshirtyes" class="radio_input"><span></span>S</label> <!-- 1 added at the end for test -->
+                            <input type="radio" name="tshirt" class="checkboxLabel main_street_input" id="tshirtm" value="m"{if $Post.tshirt eq 'm'} checked="checked"{/if}  />
+                            <label for="tshirtm" class="radio_input"><span></span>M</label> <!-- 1 added at the end for test -->
+                            <input type="radio" name="tshirt" class="checkboxLabel main_street_input" id="tshirtl" value="l"{if $Post.tshirt eq 'l'} checked="checked"{/if}  />
+                            <label for="tshirtl" class="radio_input"><span></span>L</label> <!-- 1 added at the end for test -->
+                            <input type="radio" name="tshirt" class="checkboxLabel main_street_input" id="tshirtxl" value="xl"{if $Post.tshirt eq 'xs'} checked="checked"{/if}  />
+                            <label for="tshirtxl" class="radio_input"><span></span>XL</label> <!-- 1 added at the end for test -->
+
+                        </div>
+                        <!-- 
+                        <div class="form-item customCheckbox">
+                            <label for="">I&rsquo;d like to be an advocate</label>
+                            <input type="radio" name="advocate" class="checkboxLabel main_street_input" id="advocateyes" value="1"  {if $Post.advocate eq 1}checked="checked"{/if}  />
+                            <label for="advocateyes"><span></span>Yes</label>    
+
+                            <input type="radio" name="advocate" class="checkboxLabel main_street_input" id="advocateyes" value="1"  {if $Post.advocate eq 1}checked="checked"{/if}  />
+                            <label for="advocateyes"><span></span>No</label> 
+                        </div>      -->                           
+                        <hr />
+                        
+                        <div class="form-item input-row custom-select">
+                            <label for="discountcode">Discount code</label>
+                            <div class="">                                    
+                               <input type="text" name="discountcode" id="discountcode" maxlength="9" class="input-text border  {if $Errors.discountcode.message ne ''}error{/if}"   value="{$Post.discountcode}" />
+                                <aside class="optional">
+                                    (Optional)
+                                </aside>
+                            </div>
+                        </div>                          
+                        
+                        <div class="form-item input-row customCheckbox">
+                            <label for="">Would you like your funds raised to be used in your region?</label>
+                            <input type="radio" name="region" class="checkboxLabel main_street_input" id="regionyes" value="1"{if $Post.region eq 1} checked="checked"{/if}  />
+                            <label for="regionyes" class="radio_input"><span></span>Yes</label> <!-- 1 added at the end for test -->
+
+                            <input type="radio" name="region" class="checkboxLabel main_street_input" id="regionno" value="0"{if $Post.region eq 0 or !isset($Post.region) } checked="checked"{/if}  />
+                            <label for="regionno" class="radio_input"><span></span>No</label> <!-- 1 added at the end for test -->  
+                        </div>
+                        
+                        <input type="hidden" name="jgoptin" value="0" />
+                        
+                        <div class="form-item input-row customCheckbox">
+                            <label for="">Stay up to date with news about how your support is helping.</label>
+                            <input type="radio" name="charityoptin" class="checkboxLabel main_street_input" id="rnlioptinyes" value="1"{if $Post.charityoptin eq 1 or ! isset($Post.charityoptin) or $Post.charityoptin neq 0 } checked="checked"{/if}  />
+                            <label for="rnlioptinyes" class="radio_input"><span></span>Yes</label> <!-- {$Post.charityoptin|intval} -->     
+
+                            <input type="radio" name="charityoptin" class="checkboxLabel main_street_input" id="rnlioptinno" value="0"{if isset($Post.charityoptin) and $Post.charityoptin neq 1 } checked="checked"{/if}   />
+                            <label for="rnlioptinno" class="radio_input"><span></span>No</label> <!-- 1 added at the end for test -->     
+                        </div> 
+
+                                      
+                        <div class="form-item input-row terms customCheckbox">                        
+                            <input type="checkbox" name="signoff" class="checkboxLabel main_street_input {if $Errors.signoff.message ne ''}error{/if}" id="jgoptinyes2" value="1" {if $Post.signoff eq 1}checked="checked"{/if} validate="required:true" />                            
+                            <label for="jgoptinyes2" class="label {if $Errors.signoff.message ne ''}error{/if}"><span class="hint" data-title=""></span><p>Do you have guardian sign-off (if under 18)?</p></label> 
+                            <span class="error">{if $Errors.signoff.message  ne ''}You must agree to the Terms and Conditions to proceed{/if}</span>
+                        </div>      
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 fieldset-submit water-line-bottom createpage">
+        	        <div class="form-item input-row centered">
+                        <button class="button submit site_cta" title="Next" type="submit">
+                            Register
+                        </button>          
+                        <p class="form-submit">
+                            <input name="action" type="hidden" id="action" value="createpage" />
+                            <input type="hidden" name="formName" value="createpage" />
+                        </p>
+                        {$nonce}               
+        	        </div>
+                </div>
+            </form>
+        </div>
+    </section>

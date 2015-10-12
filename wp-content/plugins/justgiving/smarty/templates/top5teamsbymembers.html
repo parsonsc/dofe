@@ -1,0 +1,15 @@
+<table class="top5teams"> 
+    <thead> 
+        <tr> 
+            <th colspan="2"><span>Simply the Best:Today&rsquo;s Top 5 Teams</span></th>  
+        </tr> 
+    </thead> 
+    <tbody>
+{foreach from=$teams key=k item=v}
+        <tr>
+            <td class="teamname">{$v.teamname|@ucfirst}</td>
+            <td class="members">{if $v.numMembers gt 0 }{$v.numMembers}{else}0{/if} {if $v.numMembers eq 1 }{else}{/if}</td>
+        </tr>
+{/foreach} 
+    </tbody> 
+</table>                        

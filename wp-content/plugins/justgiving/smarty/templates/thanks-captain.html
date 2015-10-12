@@ -1,0 +1,143 @@
+<div class="thank_you">
+    <header class="thanks_header">
+        <img src="{$templateurl}/img/thanks_header.png" alt="Thanks for taking the h2only challenge" class="thanks_hero">
+        <h2>Thanks for becoming an H2Only captain</h2>
+        <h2>Get ready for 10 days. 100% water.</h2>
+        <p>It’s going to be a challenge. But we’ll be with you all the way, helping you lead crew and keep your heads above water. </p>
+        <p>When the cravings get too much, just remember that you’re helping the RNLI save lives at sea. So stay strong, and good luck.</p>
+        <p>So stay strong, and good luck.</p>
+        <section class="social_bar">
+            <div class="social_underline"></div>
+            <h4>Tell your friends and colleagues</h4>
+            {if $settings.fbappid ne ''}
+            <script type="application/javascript">
+              window.fbAsyncInit = function() {ldelim}
+                // init the FB JS SDK
+                FB.init({ldelim}
+                  appId      : '{$settings.fbappid}',                            
+                  status     : true,                                 
+                  xfbml      : true                                  
+                {rdelim});
+              {rdelim};
+              // Load the SDK asynchronously
+              (function(d, s, id){ldelim}
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {ldelim}return;{rdelim}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/all.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+               {rdelim}(document, 'script', 'facebook-jssdk'));
+               
+            function FBShareOp(){ldelim}
+                var product_name   =    'Go on, just one sip';
+                var description    =    "I’m denying the drinks I love for 10 days. Join me and say no to tea, coffee, wine, beer and fizzy drinks to help the RNLI save lives at sea. Let’s team up and take the challenge together from 2-12 June";
+                var share_image    =    '{php} global $wpjg_generalSettings; echo (!jg_check_missing_http($wpjg_generalSettings['imageurl'])) ? get_home_url() : '';{/php}/FB_share_TellYourFriends.jpg';
+                var share_url      =    '{php} echo get_home_url('/') {/php}';  
+                var share_capt     =    'H2Only';
+                FB.ui({ldelim}
+                    method: 'feed',
+                    name: product_name,
+                    link: share_url,
+                    picture: share_image,
+                    caption: share_capt,
+                    description: description
+                {rdelim}, function(response) {ldelim}
+                    if(response && response.post_id){ldelim}{rdelim}
+                    else{ldelim}{rdelim}
+                {rdelim});
+              {rdelim}  
+              function FBSendAOp(link){ldelim}  
+              FB.ui({ldelim}  
+                method: 'send',
+                link: link,
+                {rdelim});  
+              {rdelim}
+            </script>
+            {/if}                   
+            <nav class="spread-social">
+                <ul>
+                    <li class="twitter_box">
+                        <a data-provider="twitter"  rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url={$homepage}&amp;text={php} echo urlencode("I’m denying the drinks I love for 10 days. Come aboard with me and go #H2Only to help #RNLI save lives at sea ");{/php}">
+                            <i class="fa fa-twitter"></i><p>Tweet</p>
+                        </a>
+                    </li>
+                    <li class="fb_box">
+                        <a data-provider="facebook"  rel="nofollow" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={$homepage}" {if $settings.fbappid ne ''}onclick="FBShareOp(); return false;"{/if}>   
+                            <i class="fa fa-facebook"></i> <p>Share</p>
+                        </a>
+                    </li>
+                    <li class="web_box">
+                        {php}
+                            $user = $this->get_template_vars('user');
+                            $link = get_home_url('/');
+                            $subj = "Can you deny the drinks you love for 10 days?";
+                            $body = "I’m going H2Only for 10 days from 2-12 June at 5pm, to help the RNLI’s brave lifeboat crew and lifeguards to save lives at sea.
+That’s 10 days without tea, coffee, wine, beer and fizzy drinks. It’s going to be a challenge, but we’ll be stronger as a team. Will you sign up now and join me? 
+{$link}
+Just be sure to keep the evening of 12 June free, to celebrate being reunited with our favourite drinks.";                        
+                            
+                            
+                            $subj = str_replace(" ", "%20", $subj);
+                            $body = str_replace(array("\n", "\r"), '%0D%0A%0D%0A', str_replace(" ", "%20",$body));
+                        {/php}
+                        <a data-provider="email" href="mailto: ?subject={php} echo $subj;{/php}&body={php} echo $body;{/php}" rel="nofollow">    
+                            <i class="fa fa-envelope-o"></i> <p>Email</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </header> 
+    <div class="clear"></div>
+
+    <section class="challenge_others">
+        <div class="inner_content">
+            <div class="block challenge_block">
+                <div class="challenge_copy"> 
+                    <h3>CHALLENGE YOUR CREW</h3>
+                    <p>They’re the friends we all know and love; the ones you gossip with around the kettle at work, your pub sidekicks, or your coffee morning mums. Because if you’re going H<sub class="lower_2">2</sub>Only, it’s only fair you take them with you. You’ll be stronger as a crew – and you’ll raise even more money.</p>
+                    <a class="site_cta" data-provider="facebook"  rel="nofollow" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={$homepage}" {if $settings.fbappid ne ''}onclick="FBShareOp(); return false;"{/if}>CHALLENGE THEM</a>                
+                </div>               
+            </div>
+            <div class="block challenge_block challenge_img">
+                <!-- <img src="{$templateurl}/img/challege_others.jpg" alt="Challenge others" width="100%"> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="select_challenge">
+        <div class="inner_content">
+            <h3>Select a challenge message to share on facebook</h3>
+            <ul>
+                <li>
+                    <img src="{$templateurl}/img/thanks_cocktail.jpg" alt="Ahoy there, party animals!">
+                        <article>
+                            <h3>Ahoy there, party animals!</h3>
+                            <p>I’m packing away the cocktail shaker from 2-12 June. And I challenge you to join me and deny our favourite drinks for 10 days. Sign up and let’s go H<sub class="lower_2">2</sub>Only together to help the RNLI to save lives at sea. </p>
+                            <a href="http://www.facebook.com/dialog/send?app_id={$settings.fbappid}&link={php} echo get_home_url('/').'?party'; {/php}&redirect_uri={php} echo get_permalink(); {/php}" onclick="FBSendAOp('{php} echo get_home_url('/').'?party'; {/php}'); return false;" class="site_cta">Challenge them</a>
+                        </article>
+                    </img>
+                </li>
+                <li>
+                    <img src="{$templateurl}/img/thanks_beer.jpg" alt="Ahoy there, beer buddies!">
+                        <article>
+                            <h3>Ahoy there, beer buddies!</h3>
+                            <p>I’m calling time at the bar from 2-12 June. And I challenge you to avoid the pub and go H<sub class="lower_2">2</sub>Only with me. That’s no beer, wine, tea, coffee or fizzy drinks for 10 days. Sign up and let’s go to help the RNLI save lives at sea.</p>
+                            <a href="http://www.facebook.com/dialog/send?app_id={$settings.fbappid}&link={php} echo get_home_url('/').'?beer'; {/php}&redirect_uri={php} echo get_permalink(); {/php}" onclick="FBSendAOp('{php} echo get_home_url('/').'?beer'; {/php}'); return false;" class="site_cta">Challenge them</a>
+                        </article>
+                    </img>
+                </li>
+                <li>
+                    <img src="{$templateurl}/img/thanks_tea.jpg" alt="Ahoy there, tea-breakers!">
+                        <article>
+                            <h3>Ahoy there, tea-breakers!</h3>
+                            <p>I’m switching off the kettle and the coffee machine from 2-12 June. And I challenge you to swap our tea breaks for water cooler moments, as we go H<sub class="lower_2">2</sub>Only together. That’s no tea, coffee, fizzy drinks, beer or wine to raise money and help the RNLI save lives at sea.</p>
+                            <a href="http://www.facebook.com/dialog/send?app_id={$settings.fbappid}&link={php} echo get_home_url('/').'?tea'; {/php}&redirect_uri={php} echo get_permalink(); {/php}" onclick="FBSendAOp('{php} echo get_home_url('/').'?tea'; {/php}'); return false;" class="site_cta">Challenge them</a>
+                        </article>
+                    </img>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+</div>    

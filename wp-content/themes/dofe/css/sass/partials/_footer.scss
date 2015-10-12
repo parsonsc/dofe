@@ -1,0 +1,246 @@
+// DofE
+// FOOTER
+
+// PARTNERS
+.partners {
+	background-image: url(../images/hp/partners.jpg);
+	overflow: hidden;
+	height: 400px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.partners header {
+	color: $white;
+	text-align: left;
+	width: 940px;
+	font-size: 18px;
+	margin: 100px auto 25px;
+	overflow: hidden;
+}
+.partners header p strong {
+	font-size: 20px;
+}
+.partners .partner_logo {
+	width: 940px;
+	margin: 25px auto 150px;
+	overflow: hidden;
+}
+.partners .partner_logo ul li {
+	display: inline-block;
+	float: left;
+	margin-right: 40px;
+}
+.partners .partner_logo ul li:last-child {
+	margin-right: 0;
+}
+
+footer.site_footer {
+	background: $doe_black;
+	padding: 35px 0;
+	overflow: hidden;
+}
+
+footer.site_footer .inner_content {
+	max-width: 940px;
+}
+
+// FOOTER LOGO
+footer.site_footer .footer_logo {
+	width: 230px;
+	float: left;
+	display: block;
+	margin-right: 80px;
+}
+
+// EMAIL SIGN UP
+footer.site_footer .email_signup {
+	display: block;
+	float: left;
+	margin-right: 70px;
+	width: 295px;
+}
+footer.site_footer .email_signup form label {
+	display: block;
+	width: 100%;
+	color: $white;
+	margin: 0 0 20px;
+}
+
+footer.site_footer .email_signup form input {
+	border: none;
+	box-shadow: 0;
+	padding: 10px 0 10px 5px;
+	float: left;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	width: 200px;
+}
+footer.site_footer .email_signup form button {
+	background: $twitter;
+	color: $white;
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	box-shadow: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+// SOCIAL FOOTER
+footer.site_footer .footer_social {
+	float: right;
+	display: block;
+	color: $white;
+	margin-right: 20px;
+}
+footer.site_footer .footer_social p {
+	margin-top: 0;
+	padding-top: 0;
+}
+footer.site_footer .footer_social ul li {
+	display: block;
+	float: left;
+	width: 60px;
+}
+
+
+// BOTTOM BAR SUBNAV
+footer.site_footer .bottom_bar {
+	clear: both;
+	width: 100%;
+	margin: 35px auto;
+	padding: 35px 0 0;
+	border-top: 1px solid $white;
+	float: left;
+}
+footer.site_footer .bottom_bar ul li {
+	display: inline-block;
+	color: $white;
+	margin-right: 30px;
+}
+footer.site_footer .bottom_bar li a {
+	color: $white;
+}
+
+
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	
+	footer.site_footer .inner_content {
+		max-width: 92%;
+	}
+
+	// FOOTER LOGO
+	footer.site_footer .footer_logo {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 25px;
+	}
+	footer.site_footer .footer_logo img {
+		width: 250px;
+	}
+
+	// EMAIL SIGN UP
+	footer.site_footer .email_signup {
+		margin-right: 4%;
+	}
+
+
+
+	// BOTTOM BAR SUBNAV
+	footer.site_footer .bottom_bar {
+		padding: 35px 0 0;
+		font-size: 12px;
+	}
+	footer.site_footer .bottom_bar ul li {
+		display: inline-block;
+		color: $white;
+		margin-right: 30px;
+	}
+
+
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+
+	// PARTNERS
+	.partners {
+		background-position: 0 0;
+	}
+	.partners header {
+		color: $doe_black;
+		width: 94%;
+		font-size: 12px;
+		margin: 0 auto 0;
+		background: $white;
+		padding: 2% 4%;
+
+	}
+	.partners header p strong {
+		font-size: 16px;
+	}
+	.partners .partner_logo {
+		margin: 50% auto 10%;
+		width: 100%;
+	}
+	.partners .partner_logo ul li {
+		display: block;
+		float: left;
+		margin-right: 10%;
+    	width: 40%;
+    	padding-bottom: 27px;
+	}
+	
+	footer.site_footer .inner_content {
+		max-width: 92%;
+	}
+
+	// FOOTER LOGO
+	footer.site_footer .footer_logo {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 25px;
+	}
+	footer.site_footer .footer_logo img {
+		width: 250px;
+	}
+
+	// EMAIL SIGN UP
+	footer.site_footer .email_signup {
+		margin-right: 0;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	footer.site_footer .email_signup form input {
+	    padding: 10px 0 10px 5px;
+	    width: 50%;
+	}
+
+	// SOCIAL FOOTER
+	footer.site_footer .footer_social {
+		float: left;
+		margin-right: 0;
+	}
+
+
+	// BOTTOM BAR SUBNAV
+	footer.site_footer .bottom_bar {
+		padding: 35px 0 0;
+		font-size: 12px;
+	}
+	footer.site_footer .bottom_bar ul li {
+		margin-right: 0;
+	}
+	footer.site_footer .bottom_bar ul li:first-child {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}

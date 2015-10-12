@@ -1,0 +1,24 @@
+
+<table id="myTable" class="tablesorter {literal}{sortlist: [[2,1]]}{/literal}"> 
+    <thead> 
+        <tr> 
+            <th><span>Name</span></th>  
+            <th><span>Members</span></th>  
+            <th><span>Raised so far</span></th> 
+            <th><span>Target</span></th> 
+            <th><span>Facebook</span></th> 
+            <th><span>Twitter</span></th> 
+        </tr> 
+    </thead> 
+    <tbody>
+{foreach from=$events key=k item=v}
+        <tr>
+            <td><a href="{$detailpage}?evid={$v.jgeventid}">{$v.eventname}</td>
+            <td>{$v.eventname}</td>
+            <td>{$v.eventdescr}</td>
+            <td>{$v.eventstart}</td>
+            <td>{$v.location}</td>
+        </tr>
+{/foreach} 
+    </tbody> 
+</table>                        

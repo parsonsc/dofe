@@ -1,0 +1,100 @@
+    <section class="create_event">
+        <header class="sign_up_banner">
+        </header>
+        <div class="inner_content">
+            <p class="log_out">Not {$Session.email}? Click <a href="{php} echo get_permalink(24);{/php}">here</a> to logout.</p>
+
+            <form enctype="multipart/form-data" method="post"
+                  id="eventadd" class="create_page user-forms " name="eventadd" action="{$formurl}">
+
+                <div class="container water-bg water-line-top eventadd">
+                    <div class="col-xs-12">
+
+                        <div class="form-item input-row eventname">
+                            <label for="eventname" class="jg-placeholder-title">Event name</label>
+                           
+                            <input name="eventname" type="text"  id="eventname" value="{$Post.eventname}" class="input-text jg-placeholder-input"  validate="required:true" placeholder=""/>
+                            <span class="error">{if $Errors.eventname.message ne ''}{$Errors.eventname.message}{/if} {if $Errors.eventname.message ne ''}{$Errors.eventname.message}{/if}</span>
+                        </div>
+                        <div class="form-item input-row eventdescr">
+                            <label for="eventdescr" class="jg-placeholder-title">Event description</label>
+                           
+                            <input name="eventdescr" type="text"  id="eventdescr" value="{$Post.eventdescr}" class="input-text jg-placeholder-input"  validate="required:true" placeholder=""/>
+                            <span class="error">{if $Errors.eventdescr.message ne ''}{$Errors.eventdescr.message}{/if} {if $Errors.eventdescr.message ne ''}{$Errors.eventdescr.message}{/if}</span>
+                        </div>
+                        <div class="form-item input-row eventstart">
+                            <label for="eventstart" class="jg-placeholder-title">Event start date</label>
+                           
+                            <input name="eventstart-date" type="date"  id="eventstart" {if $Post.eventstart-date ne 0}value="{$Post.eventstart|date_format:"%Y-%m-%d"}"{/if} class="input-text jg-placeholder-input"  validate="required:true" placeholder=""/>
+                            <input name="eventstart-time" type="time"  id="eventstart"  {if $Post.eventstart-time ne 0}value="{$Post.eventstart|date_format:"%H:%M:%S"}"{/if} class="input-text jg-placeholder-input" placeholder=""/>
+                            <span class="error">{if $Errors.eventstart.message ne ''}{$Errors.eventstart.message}{/if} {if $Errors.eventstart.message ne ''}{$Errors.eventstart.message}{/if}</span>
+                        </div>
+                        <!-- {$Post.eventstart} -->
+                        <div class="form-item input-row eventend">
+                            <label for="eventend" class="jg-placeholder-title">Event end date</label>
+                           
+                            <input name="eventend-date" type="date"  id="eventend" {if $Post.eventend-date ne 0}value="{$Post.eventend|date_format:"%Y-%m-%d"}"{/if} class="input-text jg-placeholder-input"  validate="required:true" placeholder=""/>
+                            <input name="eventend-time" type="time"  id="eventend" {if $Post.eventend-time ne 0}value="{$Post.eventend|date_format:"%H:%M:%S"}"{/if} class="input-text jg-placeholder-input" placeholder=""/>
+                            <span class="error">{if $Errors.eventend.message ne ''}{$Errors.eventend.message}{/if} {if $Errors.eventend.message ne ''}{$Errors.eventend.message}{/if}</span>
+                        </div>
+                        <!-- {$Post.eventend} -->
+                        
+                        <div class="form-item input-row eventlocn">
+                            <label for="eventlocn" class="jg-placeholder-title">Event location</label>
+                            <input id="geocomplete" placeholder="Enter your address" type="text" name="eventlocn" value="{$Post.eventlocn}" class="input-text jg-placeholder-input"  validate="required:true" />
+                            <span class="error">{if $Errors.eventlocn.message ne ''}{$Errors.eventlocn.message}{/if} {if $Errors.eventlocn.message ne ''}{$Errors.eventlocn.message}{/if}</span>
+                            <fieldset class="location">
+                                <div class="label">
+                                    <p>Street address</p>
+                                    <input class="field" id="street_number" data-geo="street_number" name="street_number" readonly="readonly" />
+                                    <input class="field" id="route" data-geo="route" name="street_name" readonly="readonly" />
+                                </div>
+                                <div class="label">
+                                    <p>City</p>
+                                    <input class="field" id="locality" name="city" data-geo="locality" readonly="readonly" />
+                                </div>                                
+                                <div class="label">
+                                    <label>State</label>
+                                    <input class="field" id="administrative_area_level_1" data-geo="administrative_area_level_1" name="state" readonly="readonly" />
+                                    <label>Postcode</label>
+                                    <input class="field" id="postal_code" data-geo="postal_code" name="postcode" readonly="readonly" />
+                                </div>
+                                <div class="label">
+                                    <label>Country</label>
+                                    <input class="field" id="country" data-geo="country" name="country" readonly="readonly" />
+                                    <input type="hidden" class="field" id="lat" data-geo="lat" name="lat" />
+                                    <input type="hidden" class="field" id="lng" data-geo="lng" name="lng" />
+                                </div>                                 
+                            </fieldset>
+                        </div>                        
+                        
+                        <div class="form-item input-row">
+                            <label for="eventtype">What sort of event are you doing?</label>
+                            <div class="selectStyle">
+                                <select type="text" name="eventtype" id="eventtype" class="input-text border styled2 {if $Errors.eventtype.message ne ''}error{/if}" validate="required:true" >
+                                
+                                {foreach from=$eventtypes  key="k" item="v"}
+                                   <option value="{$k}" {if $Post.eventtype eq $k and $Post.eventtype ne ''} selected="selected"{/if}>{$v}</option>
+                                {/foreach}                        
+                                </select>                  
+                            </div>
+                        </div>                        
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 fieldset-submit water-line-bottom createpage">
+        	        <div class="form-item input-row centered">
+                        <button class="button submit site_cta" title="Next" type="submit">
+                            Create event
+                        </button>          
+                        <p class="form-submit">
+                            <input name="action" type="hidden" id="action" value="eventadd" />
+                            <input type="hidden" name="formName" value="eventadd" />
+                        </p>
+                        {$nonce}               
+        	        </div>
+                </div>
+            </form>
+        </div>
+    </section>

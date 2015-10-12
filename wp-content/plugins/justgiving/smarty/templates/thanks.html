@@ -1,0 +1,125 @@
+            <div class="main_content thanks_content" id="mainContent">       
+                <section class="">
+                    <div class="inner_content small_container">
+                        <header>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin fringilla interdum. Sed interdum a odio vulputate porttitor. Etiam a rutrum quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin fringilla interdum. Sed interdum a odio vulputate porttitor. Etiam a rutrum quam.</p>
+                        </header>
+                        
+                        <div class="thanks_summary personal">
+                            <article>
+                                <h2>Your challenge summary</h2>
+
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-info-circle"></i> <p>{$event.eventdescr}</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-calendar"></i> <p>{$event.eventstart}</p>
+                                    </li>
+                                </ul>
+                                <a href="{$user.pageurl}" target="_blank" class="site_cta">visit your justgiving page</a>
+                            </article>
+
+                            <img src="{$templateurl}/images/thanks/personal.png" alt="Personal">
+                        </div>                     
+                    </div>
+                </section>
+ {if $settings.fbappid ne ''}
+            <script type="application/javascript">
+              window.fbAsyncInit = function() {ldelim}
+                // init the FB JS SDK
+                FB.init({ldelim}
+                  appId      : '{$settings.fbappid}',                            
+                  status     : true,                                 
+                  xfbml      : true                                  
+                {rdelim});
+              {rdelim};
+              // Load the SDK asynchronously
+              (function(d, s, id){ldelim}
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {ldelim}return;{rdelim}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/all.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+               {rdelim}(document, 'script', 'facebook-jssdk'));
+               
+            function FBShareOp(){ldelim}
+                var product_name   =    'Go on, just one sip';
+                var description    =    "I’m denying the drinks I love for 10 days. Join me and say no to tea, coffee, wine, beer and fizzy drinks to help the RNLI save lives at sea. Let’s team up and take the challenge together from 2-12 June";
+                var share_image    =    '{php} global $wpjg_generalSettings; echo (!jg_check_missing_http($wpjg_generalSettings['imageurl'])) ? get_home_url() : '';{/php}/FB_share_TellYourFriends.jpg';
+                var share_url      =    '{php} echo get_home_url('/') {/php}';  
+                var share_capt     =    'H2Only';
+                FB.ui({ldelim}
+                    method: 'feed',
+                    name: product_name,
+                    link: share_url,
+                    picture: share_image,
+                    caption: share_capt,
+                    description: description
+                {rdelim}, function(response) {ldelim}
+                    if(response && response.post_id){ldelim}{rdelim}
+                    else{ldelim}{rdelim}
+                {rdelim});
+              {rdelim}  
+              function FBSendAOp(link){ldelim}  
+              FB.ui({ldelim}  
+                method: 'send',
+                link: link,
+                {rdelim});  
+              {rdelim}
+            </script>
+            {/if}       
+                <section class="social_share">
+                    <div class="inner_content small_container">
+                        <h3>Tell everyone about your challenge</h3>
+                        <ul>
+                            <li class="facebook">
+                                <a rel="nofollow" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u={$homepage}" {if $settings.fbappid ne ''}onclick="FBShareOp(); return false;"{/if}><i class="fa fa-facebook"></i> On Facebook</a>
+                            </li>
+
+                            <li class="twitter">
+                                <a rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url={$homepage}&amp;text={php} echo urlencode("I’m denying the drinks I love for 10 days. Come aboard with me and go #H2Only to help #RNLI save lives at sea ");{/php}"><i class="fa fa-twitter"></i> On Twitter</a>
+                            </li>
+
+                            <li class="email">
+                        {php}
+                            $user = $this->get_template_vars('user');
+                            $link = get_home_url('/');
+                            $subj = "Can you deny the drinks you love for 10 days?";
+                            $body = "I’m going H2Only for 10 days from 2-12 June at 5pm, to help the RNLI’s brave lifeboat crew and lifeguards to save lives at sea.
+That’s 10 days without tea, coffee, wine, beer and fizzy drinks. It’s going to be a challenge, but we’ll be stronger as a team. Will you sign up now and join me? 
+{$link}
+Just be sure to keep the evening of 12 June free, to celebrate being reunited with our favourite drinks.";                        
+                            
+                            
+                            $subj = str_replace(" ", "%20", $subj);
+                            $body = str_replace(array("\n", "\r"), '%0D%0A%0D%0A', str_replace(" ", "%20",$body));
+                        {/php}                            
+                               <a rel="nofollow" title="Share by email"  href="mailto: ?subject={php} echo $subj;{/php}&body={php} echo $body;{/php}" ><i class="fa fa-envelope-o"></i> By Email</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>   
+
+                <section class="related_content">
+                    <div class="inner_content small_container">
+                        <article>
+                            <p class="related_title">Resources to promote your challenge</p>
+                            <img src="{$templateurl}/images/thanks/related_01.jpg" alt="Resources">
+                            <h3>Resources</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin fringilla interdum. Sed interdum a odio vulputate porttitor. Etiam a rutrum quam.</p>
+                            <a href="<?php echo get_permalink(36); ?>" class="site_cta">get everything you need here</a>
+                        </article>
+
+                        <article>
+                            <p class="related_title">Keep your challenge up to date</p>
+                            <img src="{$templateurl}/images/thanks/related_02.jpg" alt="Resources">
+                            <h3>Resources</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin fringilla interdum. Sed interdum a odio vulputate porttitor. Etiam a rutrum quam.</p>
+                            <a href="<?php echo get_permalink(36); ?>" class="site_cta">update your challenge here</a>
+                        </article>
+                    </div>
+                </section>                                   
+            </div>
+
+

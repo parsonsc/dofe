@@ -1,0 +1,291 @@
+// DofE
+// HEADER
+
+header.site_header {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	background-image: url(../images/layout/header_hero.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 40vh;
+}
+header.site_header.full_bg {
+	height: 100vh
+}
+header.site_header.full_bg .inner_content {
+	height: 100vh;
+}
+// LOGO 
+header.site_header nav.site_nav .logo {
+	padding-right: 0;
+	width: 66px;
+	float: left;
+	padding-left: 17px;
+}
+header.site_header nav.site_nav .logo a {
+	padding: 5px 0;
+}
+
+// SITE NAVIGATION
+header.site_header nav.site_nav {
+	background: $white;
+	width: 940px;
+	margin: 0 auto;
+	overflow: hidden;
+	-webkit-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.75);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+header.site_header nav.site_nav ul li {
+	display: block;
+	float: left;
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 0 17px;
+	text-align: center;
+}
+header.site_header nav.site_nav ul li:hover, 
+header.site_header nav.site_nav ul li.selected {
+	background-image: url(../images/layout/hover.png);
+	background-repeat: no-repeat;
+	background-size: 70px;
+	background-position: 0 80%;
+}
+header.site_header nav.site_nav ul li a {
+	color: $doe_black;
+	padding: 29px 0;
+	display: block;
+}
+
+
+// sign up
+header.site_header nav.site_nav .signup {
+	background: $red;
+	float: right;	
+}
+header.site_header nav.site_nav .signup a {
+	padding: 29px 17px;
+	display: block;
+	color: $white;
+}
+
+
+// SOCIAL SHARE SIDEBAR
+aside.social_share {
+	width: 100px;
+	position: absolute;
+	top: 40%;
+	right: 5px;
+	padding: 40px 0 0;
+	background-image: url(../images/layout/share.png);
+	background-size: 100%;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+aside.social_share ul li {
+	display: block;
+	width: 60px;
+	float: right;
+}
+aside.social_share ul li.facebook {
+	margin-top: -2px;
+    margin-left: -1px;
+}
+
+// HEADER TAGLINE
+.header_tagline {
+	width: 880px;
+	margin: 0 auto;
+	color: $white;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 300;
+}
+.header_tagline h1 {
+	font-size: 70px;
+	margin-top: 17%;
+}
+.header_tagline img {
+	width: auto;
+	margin: 0 auto;
+}
+.header_tagline p {
+	margin: 10px auto 25px;
+}
+header.site_header.full_bg {
+	display: block;
+}
+.hp .header_tagline {
+	margin-top: 10%;
+}
+
+// CLICK TO DROP DOWN TO NEXT SECTION
+header.site_header footer.click_down {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 5%;
+	left: 0;
+	font-size: 16px;
+	text-transform: uppercase;
+	display: none;
+}
+header.site_header footer.click_down a {
+	color: $white;
+	display: block;
+}
+header.site_header footer.click_down a i {
+	padding-top: 5px;
+	font-size: 20px;
+	display: block;
+}
+
+header.site_header a.site_cta {
+	font-size: 16px;
+}
+header.site_header.full_bg footer.click_down {
+	display: block;
+}
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+
+	// SITE NAVIGATION
+	header.site_header nav.site_nav {
+		width: 100%;
+	}
+	header.site_header nav.site_nav ul li {
+		font-size: 12px;
+		padding: 0 9px;
+	}
+	header.site_header nav.site_nav ul li a {
+		padding: 29px 0;
+	}
+
+
+	// HEADER TAGLINE
+	.header_tagline {
+		width: 80%;
+		font-size: 18px;
+		margin-top: 10%;
+	}
+	.header_tagline img {
+		width: 70%;
+	}
+	.header_tagline a {
+		margin-top: 10px;
+	}
+
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+
+	// SITE NAVIGATION
+	header.site_header nav.site_nav {
+		width: 100%;
+		z-index: 9;
+	}
+	
+
+	// mobile button
+	button.mobile_button {
+		background: $white;
+		border: 0;
+		box-shadow: none;
+		outline: 0;
+		display: block;
+		float: left;
+		font-size: 14px;
+		padding: 18px 10px 0 10px;
+	}
+	button.mobile_button i {
+		font-size: 24px;
+		padding-top: 5px;
+	}
+	header.site_header nav.site_nav .signup a {
+    	padding: 25px 17px;
+	}
+
+	// nav ul
+	header.site_header nav.site_nav ul {
+	    clear: both;
+	    width: 80%;
+	    margin: 0 auto;
+	    overflow: hidden;
+	    position: absolute;
+	    background-color: #fff;
+	    left: 10%;
+	    top: 9%;
+	    z-index: 1;
+	    border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		border-bottom: 5px solid $red;
+		display: none;
+	}
+	header.site_header nav.site_nav ul li {
+		display: block;
+		float: none;
+		font-size: 14px;
+		padding: 0;
+	}
+	header.site_header nav.site_nav ul li a {
+		padding: 20px 0;
+	}
+
+
+	// SOCIAL SHARE SIDEBAR
+	header.site_header nav.site_nav ul .social_share {
+		width: 100%;
+		position: relative;
+		top: auto;
+		right: 0;
+		padding: 0;
+		background-image: url(../images/layout/share_mob.png);
+		background-size: 75px;
+		background-position: 11% 0;
+		background-repeat: no-repeat;
+	}
+	header.site_header nav.site_nav ul .social_share ul {
+		background: none;
+		position: relative;
+		left: 0;
+		top: 0;
+		border: none;
+		border-radius: 0;
+		text-align: center;
+	}
+	header.site_header nav.site_nav ul .social_share ul li {
+		display: inline-block;
+    	width: 60px;
+    	float: inherit;
+	}
+	header.site_header nav.site_nav ul .social_share ul li.facebook {
+		margin-top: 0;
+	    margin-left: 0;
+	}
+
+
+	// HEADER TAGLINE
+	.header_tagline {
+		width: 92%;
+		font-size: 16px;
+		margin-top: 10%;
+	}
+	.header_tagline h1 {
+		font-size: 42px;
+	}
+	.header_tagline img {
+		width: 80%;
+	}
+	.header_tagline a.site_cta {
+		display: block;
+		font-size: 15px;
+	}
+
+}

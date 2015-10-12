@@ -1,0 +1,91 @@
+
+    <form enctype="multipart/form-data" method="post"
+          id="createpage" class="user-forms" action="{$formurl}">
+
+        <div class="container water-bg water-line-top createpage">
+            <div class="col-xs-12">
+                <div class="form-item input-row">
+                    <label for="selectUni">Select Your Uni <span class="hint" data-title="This is the title that will appear at the top of your JustGiving fundraising page"></span></label>
+                    <div class="selectStyle">
+                        <select type="text" name="jointeam" id="team" class="input-text border styled2 {if $Errors.jointeam.message ne ''}error{/if}" validate="required:true" >
+                        {foreach from=$teams key=k item=v}
+                           <option value="{$k}" {if $Post.jointeam eq $k and $Post.jointeam ne ''} selected="selected"{/if}>{$v.label}</option>
+                        {/foreach}                        
+                        </select>                  
+                    </div>
+                </div>
+                <div class="form-item input-row">
+                    <label for="pageshortname">Pick an unforgettable URL <span class="hint" data-title="This is the address of your JustGiving fundraising page ie www.justgiving.com/johnsmith"></span></label>
+                    <input {if $suggestions|@count gt 0 and $errorshortname ne ''}readonly="readonly" name="rpageshortname"{else}name="pageshortname"{/if} type="text"  id="pageshortname" value="{$Post.pageshortname}" class="input-text" validate="required:true" placeholder="www.justgiving.com/yourpagename"/>
+                </div>
+                {if $suggestions|@count gt 0 and $errorshortname ne ''}
+                <div class="form-item input-row url-suggest">
+                    <label for="rpageshortname" class="pageSuggestionTitle">Suggested alternative names:</label>
+                    <div style="clear: both;"></div>  
+                    <div class="url-alternatives">          
+                        <select id="rpageshortname" name="pageshortname" size="4" class="pageSuggestgion border {if $Errors.pageshortname.message ne ''}error{/if}" validate="required:true">
+                            {foreach from=$suggestions item=v}
+                            <option  value="{$v.label}" {if $Post.pageshortname eq $v.label and $Post.pageshortname ne ''} selected="selected"{/if} >{$v.label}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <!-- <span class="error">{$errorshortname}</span> -->
+                </div>
+                {/if}
+                
+                <div class="form-item input-row">
+                    <label for="pagetitle">Give your page an awesome title <span class="hint" data-title="This is the title that will appear at the top of your JustGiving fundraising page"></span></label>
+                    <input type="text" name="pagetitle" id="pagetitle" value="{$Post.pagetitle}" class="input-text {if $Errors.pagetitle.message ne ''}error{/if}" validate="required:true" />
+                </div>
+
+                <div class="form-item input-row pick-amount">
+                    <label for="targetAmount">Pick a fundrasing target <span class="hint" data-title="This is the target amount that will appear on your JustGiving fundraising page"></span></label>
+
+                    <input type="radio" class="radio" id="targetch35" name="targetch" value="35" {if $Post.targetch eq 35}checked="checked"{/if}/><label for="targetch35" class="first_amount"><p>&pound;35</p></label>
+
+                    <input type="radio" class="radio" id="targetchvar" name="targetch" value="var" {if $Post.targetch eq 'var'}checked="checked"{/if} placeholder="£"/><label for="targetchvar"><p>or enter amount</p></label>
+                    <div class="enterAmount">
+                        <input type="number" step="any" name="target" id="targetAmount" value="{$Post.target}" class="input-text input-amount {if $Errors.target.message ne ''}error{/if}" min=21" max="9999" maxlength="4" validate="required:true" />
+                        <span class="unit">&pound;</span>
+                    </div>
+                </div>  
+
+                <input type="hidden" name="jgoptin" id="jgoptinno" value="0" />   
+                <div class="form-item customCheckbox">
+                    <input type="checkbox" name="charityoptin" class="checkboxLabel main_street_input" id="choptinyes" value="1" {if $Post.charityoptin eq 1}checked="checked"{/if}  />
+                    <label for="choptinyes"></label> <!-- 1 added at the end for test -->
+                    <div class="label">I&rsquo;ll keep Standing Up To Cancer. I&rsquo;d love to hear more about Cancer Research UK's lifesaving work. <span class="hint" data-title="Stay up to date with your charity's news about how your support is helping"></span></div>
+                                   
+                </div>
+
+                <div class="form-item customCheckbox2">
+                    <input type="checkbox" name="tsandcs" class="checkboxLabel main_street_input {if $Errors.tsandcs.message ne ''}error{/if}" id="jgoptinyes2" value="1" {if $Post.tsandcs eq 1}checked="checked"{/if} validate="required:true" />
+                    <label for="jgoptinyes2"></label> <!-- 1 added at the end for test -->
+                    <div class="label">I&rsquo;ve read and accept the <a href="{php} echo get_permalink(61);{/php}">Terms &amp; Conditions</a><span class="hint" data-title=""></span></div>
+                    
+                </div>               
+            </div>
+        </div>
+
+        <div class="col-xs-12 fieldset-submit water-line-bottom createpage">
+	        <div class="form-item input-row centered">
+                <button class="button submit siteCTA" title="Next" type="submit">
+                    Register me!
+                </button>          
+                <p class="form-submit">
+                    <input name="action" type="hidden" id="action" value="createpage" />
+                    <input type="hidden" name="formName" value="createpage" />
+                </p>
+                {$nonce}
+                {if $Errors.tsandcs.message ne '' 
+                    or $Errors.pagetitle.message  ne ''              
+                    or $Errors.pageshortname.message  ne ''  
+                    or $Errors.jointeam.message  ne ''}
+                <p class="required_text error-text">Some fields are invalid</p>
+                {else}
+                <p class="required_text"></p>
+                {/if}                
+	        </div>
+        </div>
+
+    </form>

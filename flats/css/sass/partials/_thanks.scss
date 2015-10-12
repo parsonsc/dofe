@@ -1,0 +1,187 @@
+// DofE 
+// DofE THANKS STYLES
+
+.thanks_content {
+	background-image: url(../images/thanks/thanks_bg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-bottom: 35px;
+}
+.thanks_summary {
+	width: 870px;
+	position: relative;
+	padding: 15px 0;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.thanks_summary article {
+	width: 390px;
+	background: $white;
+	padding: 30px 225px 30px 25px;
+	float: left;
+	font-size: 18px;
+}
+.thanks_summary ul li {
+	display: block;
+	padding: 0 0 20px;
+}
+.thanks_summary ul li i {
+	display: block;
+	float: left;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+.thanks_summary a.site_cta {
+	background: $jg_purple;
+}
+
+.thanks_summary img {
+	width: 439px;
+	position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+// THANKS SOCIAL SHARE
+.thanks .thanks_content .social_share {
+	overflow: hidden;
+	text-align: center;
+}
+.thanks .thanks_content .social_share ul li {
+	display: inline-block;
+	border-radius: 3px;
+	margin-right: 35px;
+	text-transform: uppercase;
+	font-size: 16px;
+	width: 210px;
+}
+.thanks .thanks_content .social_share ul li.facebook {
+	background: $facebook;
+}
+.thanks .thanks_content .social_share ul li.twitter {
+	background: $twitter;
+}
+.thanks .thanks_content .social_share ul li.email {
+	background: $email;
+}
+.thanks .thanks_content .social_share ul li:last-child {
+	margin-right: 0;
+}
+.thanks .thanks_content .social_share ul li a {
+	color: $white;
+	display: block;
+	padding: 20px 0;
+}
+.thanks .thanks_content .social_share ul li a i {
+	padding-right: 20px;
+}
+
+// RELATED CONTENT
+.thanks .related_content {
+	overflow: hidden;
+}
+.thanks .related_content article {
+	width: 48%;
+	display: block;
+	float: left;
+	margin-right: 4%;
+	position: relative;
+}
+.thanks .related_content article:last-child {
+	margin-right: 0;
+}
+.thanks .related_content article p.related_title {
+	font-size: 18px;
+	font-weight: bolder;
+}
+.thanks .related_content article h3 {
+	position: absolute;
+	top: 35%;
+	left: 0;
+	width: 100%;
+	color: $white;
+	text-align: center;
+	font-size: 70px;
+}
+
+
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	.thanks_summary {
+		width: 90%;
+	}
+	.thanks_summary article {
+		width: 45%;
+    	padding: 30px 28% 30px 25px;
+    	font-size: 16px;
+	}
+	.thanks_summary ul li {
+		padding: 0;
+	}
+	.thanks_summary ul li i {
+		padding-right: 10px;
+		padding-bottom: 20px;
+	}
+	.thanks_summary img {
+		width: 50%;
+	}
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	.thanks_summary {
+		width: 100%;
+	}
+	.thanks_summary article {
+		width: 96%;
+		padding: 30px 2%;
+		font-size: 14px;
+	}
+	.thanks_summary ul li {
+		padding: 0 0 5px;
+	}
+	.thanks_summary ul li i {
+		padding-right: 10px;
+		padding-bottom: 25px;
+	}
+	.thanks_summary img {
+		width: 100%;
+		position: relative;
+	    top: 0;
+	    right: 0;
+	}
+
+	// THANKS SOCIAL SHARE
+	.thanks .thanks_content .social_share ul li {
+		display: block;
+		margin-right: 0;
+		font-size: 14px;
+		width: 70%;
+		margin: 0 auto 20px;
+	}
+	.thanks .thanks_content .social_share ul li:last-child {
+		margin-right: auto;
+	}
+	.thanks .thanks_content .social_share ul li a {
+		padding: 15px 0;
+	}
+	.thanks .thanks_content .social_share ul li a i {
+		padding-right: 15px;
+	}
+
+	// RELATED CONTENT
+	.thanks .related_content article {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 25px;
+	}
+	.thanks .related_content article p.related_title {
+		font-size: 16px;
+	}
+	.thanks .related_content article h3 {
+		top: 30%;
+	}
+
+}

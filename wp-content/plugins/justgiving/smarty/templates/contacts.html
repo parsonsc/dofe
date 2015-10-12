@@ -1,0 +1,44 @@
+{assign var='listsum' value=$teams|@count} 
+{math equation="x * y" x=$listsum y=.5 assign='itemscol'}
+<div class="contact_column first_column">
+    <ul>
+    {php}
+        $y = 0;
+    {/php}     
+        {foreach from=$teams item=v name=myloop} 
+            {php}
+                $y++;
+            {/php}
+            {if $i++ is odd by 1} 
+                {assign var='CellCSS' value=''} 
+            {else} 
+                {assign var='CellCSS' value='zebra'} 
+            {/if}
+        <li class="{$CellCSS}"> 
+            <p>{$v.teamname}</p>
+            {if $v.teamfbpage ne ''}
+            <div class="social_contact facebook_contact">
+               <a href="{$v.teamfbpage}">
+                   <img src="{$templateurl}/images/layout/social_box.png" alt="Facebook" title="Facebook" width="20">
+               </a>
+            </div>
+            {/if}
+            
+            {if $v.teamtwpage ne ''}
+            <div class="social_contact twitter_contact">
+               <a href="{$v.teamtwpage}" >
+                   <img src="{$templateurl}/images/layout/social_box.png" alt="Twitter" title="Twitter" width="20">
+               </a>
+            </div>
+            {/if}
+   
+        </li>       
+            {php}
+                if($y == ceil(count($this->_tpl_vars['teams'])/2)){
+                    echo '</ul></div><div class="contact_column last-column"><ul>';
+                    $this->assign('i',0);
+                }
+            {/php}
+        {/foreach} 
+    </ul>
+</div>

@@ -1,0 +1,72 @@
+// DofE 
+// DofE GALLERY STYLES
+
+div.main_content.gallery_content {
+	padding-top: 0;
+}
+section.latest_news {
+	background-image: url(../images/news/news_bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.latest_news header {
+	text-align: center;
+}
+.latest_news header h1 {
+	background-image: url(../images/news/hashtag.png);
+	background-size: 38px;
+	background-repeat: no-repeat;
+	background-position: 32% 0px;
+	width: 80%;
+	color: $h1;
+}
+.latest_news header img.hashtag {
+	float: left;
+	width: 25px;
+}
+.latest_news header ul {
+	float: right;
+	position: absolute;
+	top: -10px;
+    right: 29%;
+}
+.latest_news header ul li {
+	display: block;
+	float: left;
+	width: 60px;
+}
+.news_gallery {
+	margin-top: 100px;
+	overflow: hidden;
+}
+
+// TABLET STYLES
+@include respond-to(tablet) {
+	
+	.latest_news header h1 {
+	    background-position: 25% 0px;
+	}
+	.latest_news header ul {
+	    right: 16%;
+	}
+}
+
+// MOBILE SYLES
+@include respond-to(mobile) {
+	
+	.latest_news header {
+		padding-top: 25px;
+	}
+	.latest_news header h1 {
+	    background-position: 0% 0px;
+	    font-size: 26px;
+	}
+	.latest_news header ul {
+	    right: 0;
+	    top: 10px;
+	}
+	.latest_news header ul li {
+	    width: 40px;
+	}
+
+}

@@ -1,0 +1,116 @@
+jQuery.noConflict();
+
+(function($){
+    var $placeSearch, $autocomplete;
+    var $componentForm = {
+      street_number: 'short_name',
+      route: 'long_name',
+      locality: 'long_name',
+      administrative_area_level_1: 'short_name',
+      country: 'long_name',
+      postal_code: 'short_name'
+    };
+
+    function initialize() {
+      // Create the autocomplete object, restricting the search
+      // to geographical location types.
+      $autocomplete = new google.maps.places.Autocomplete(
+          /** @type {HTMLInputElement} */($('#autocomplete')),
+          { types: ['geocode'] });
+      // When the user selects an address from the dropdown,
+      // populate the address fields in the form.
+      google.maps.event.addListener($autocomplete, 'place_changed', function() {
+        fillInAddress();
+      });
+    }
+
+    // [START region_fillform]
+    function fillInAddress() {
+      // Get the place details from the autocomplete object.
+      var place = $autocomplete.getPlace();
+
+      for (var component in $componentForm) {
+        document.getElementById(component).value = '';
+        document.getElementById(component).disabled = false;
+      }
+
+      // Get each component of the address from the place details
+      // and fill the corresponding field on the form.
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if ($componentForm[addressType]) {
+          var val = place.address_components[i][$componentForm[addressType]];
+          document.getElementById(addressType).value = val;
+        }
+      }
+    }
+    // [END region_fillform]
+
+    // [START region_geolocation]
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var geolocation = new google.maps.LatLng(
+              position.coords.latitude, position.coords.longitude);
+          var circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy
+          });
+          $autocomplete.setBounds(circle.getBounds());
+        });
+      }
+    }
+    
+    $(window).load(function(){
+        $(document).ready(function(){  
+        if (typeof Modernizr === 'object'){    
+            yepnope({ 
+              test : Modernizr.inputtypes.datetimeLocal,
+              nope : {
+                'css': ajaxsiteroot.url + '/wp-content/plugins/justgiving/js/ui/jquery-ui.min.css',
+                'js': ajaxsiteroot.url + '/wp-includes/js/jquery/ui/datepicker.min.js'
+              },
+              callback: { // executed once files are loaded
+                'js': function() { 
+                    date_obj = new Date();
+                    date_obj_hours = date_obj.getHours();
+                    date_obj_mins = date_obj.getMinutes();
+
+                    if (date_obj_mins < 10) { date_obj_mins = "0" + date_obj_mins; }
+
+                    if (date_obj_hours > 11) {
+                        date_obj_hours = date_obj_hours - 12;
+                        date_obj_am_pm = " PM";
+                    } else {
+                        date_obj_am_pm = " AM";
+                    }
+
+                    date_obj_time = "'"+date_obj_hours+":"+date_obj_mins+date_obj_am_pm+"'";        
+                    $( "input[type=datetime-local]" ).datepicker({
+                        beforeShow: function(input) {
+                            $(input).css({
+                                "position": "relative",
+                                "z-index": 999999
+                            });
+                        },
+                        dateFormat : 'dd/mm/yy '+ date_obj_time ,
+                        showAnim: false,
+                        minDate: "+0d",
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-150:+0"
+                    }).focus(function () {
+                        $(this).blur()
+                    });   
+                }}
+            }); 
+            $( "#autocomplete" ).focus(function() {
+                geolocate()
+            });
+
+    }
+        });
+    });
+})(jQuery);   

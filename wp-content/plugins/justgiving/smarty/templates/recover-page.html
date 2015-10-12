@@ -1,0 +1,40 @@
+            <div class="main_content form_content" id="mainContent">       
+                <section class="">
+                    <div class="inner_content small_container">
+            <h2>I forgot My password</h2>
+            <p>No worries. Just give us your email and we'll send it to you.</p>
+      
+        {if $message ne ''}
+        <p class="warning">{$message}</p>
+        {/if}
+        <form enctype="multipart/form-data" method="post" id="recover_password" name="recoverPassword" class="user-forms" action="{$formurl}">            
+            <div class="form-item input-row">
+                <label for="username_email">Email address*</label>
+                <input name="username_email" type="email" id="username_email" value="{$username_email}" class="input-text" validate="required:true" />
+                <span class="error">{if $Errors.username_email.message ne ''}{$errorMark}{/if}</span>
+            </div>
+            <div class="form-item input-row centered">
+                <button class="button submit site_cta" title="Get New Password" type="submit" name="recover_password" id="recover_password">
+                    Send
+                </button>
+                <input name="action" type="hidden" id="action" value="recover_password" />
+                {$nonce}
+            </div>
+
+            <div class="forgot-links">
+                {if $loginurl ne ''}
+                <a class="back-home" href="{$loginurl}">Return to log in page</a>
+                {/if}
+            </div>               
+        </form>
+        {if $message2 ne ''}
+            {$message2}
+        {/if}
+        {if $message3 ne ''}
+            {$message3}
+        {/if}
+                    </div>
+                </section>
+
+                               
+            </div>

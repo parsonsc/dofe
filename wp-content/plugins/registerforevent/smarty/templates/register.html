@@ -1,0 +1,127 @@
+
+<div class="registerSection">
+
+    <form enctype="multipart/form-data" method="post" name="registerUser"
+        id="adduser" class="user-forms" action="{$formurl}">
+       
+    <div class="row water-bg water-line-top">    
+    <div class="col-xs-* col-xs-12 fieldset">
+        <div class="form-item input-row oterh-row">
+            <label for="title" class="inline">Title</label>
+            <div class="selectStyle">
+                <select name="title" id="title" class="input-text styled2 border {if $Errors.title.message  ne ''}error{/if}"  validate="" >
+                    <option value=""></option>
+                    <option value="Mr" {if $Post.title eq 'Mr'} selected="selected"{/if}>Mr</option>
+                    <option value="Mrs" {if $Post.title eq 'Mrs'} selected="selected"{/if}>Mrs</option>
+                    <option value="Miss" {if $Post.title eq 'Miss'} selected="selected"{/if}>Miss</option>
+                    <option value="Ms" {if $Post.title eq 'Ms'} selected="selected"{/if}>Ms</option>
+                    <option value="Dr" {if $Post.title eq 'Dr'} selected="selected"{/if}>Dr</option>
+                    <option value="Other" {if $Post.title eq 'Other'} selected="selected"{/if}>Other</option>
+                </select>
+            </div>
+            <span class="other"><input type="text" name="other_title" id="other_title"  value="{$Post.other_title}" class="input-text {if $Errors.other_title.message  ne ''}error{/if}" /></span>            
+            <span class="error">{if $Errors.title.message  ne ''}{$Errors.title.message}{/if}</span>                
+        </div>
+        <div class="form-item input-row">
+            <label for="firstname" class="inline">First name</label>
+            <input type="text" name="firstname" id="firstname" value="{$Post.firstname}" class="input-text {if $Errors.firstname.message  ne ''}error{/if}"  validate=""  />
+                 
+                <span class="error">{if $Errors.firstname.message  ne ''}{$Errors.firstname.message}{/if}</span>
+                            
+        </div>
+        <div class="form-item input-row">
+            <label for="lastname" class="inline">Last name</label>
+            <input type="text" name="lastname" id="lastname" value="{$Post.lastname}" class="input-text {if $Errors.lastname.message  ne ''}error{/if}"  validate="" />
+                 
+                <span class="error">{if $Errors.lastname.message  ne ''}{$Errors.lastname.message}{/if}</span>
+                             
+        </div>
+    </div> <!-- END Fieldset 1 -->
+
+	<div class="col-xs-* col-xs-12 fieldset">
+        <div class="form-item input-row">
+            <label for="address" class="inline">Address line 1</label>
+            <input type="text" name="address" id="address" value="{$Post.address}" class="input-text {if $Errors.address.message  ne ''}error{/if}"  validate=""  />
+                 
+                <span class="error">{if $Errors.address.message  ne ''}{$Errors.address.message}{/if}</span>
+                            
+        </div>
+        <!--div class="form-item input-row">
+            <label for="address2" class="inline">Address line 2</label>
+            <input type="text" name="address2" id="address2" value="{$Post.address2}" class="input-text {if $Errors.address2.message  ne ''}error{/if}"  />
+        </div -->
+        <div class="form-item input-row">
+            <label for="town" class="inline">Town or City</label>
+            <input type="text" name="town" id="town" value="{$Post.town}" class="input-text {if $Errors.town.message  ne ''}error{/if}"  validate=""  />
+                
+                <span class="error">{if $Errors.town.message  ne ''}{$Errors.town.message}{/if}</span>
+                              
+        </div>
+       
+        <div class="form-item input-row">
+            <label for="postcode" class="inline">Postcode</label>
+            <input type="text" name="postcode" id="postcode" value="{$Post.postcode}" class="input-text {if $Errors.postcode.message  ne ''}error{/if}"  validate="" />
+                  
+                <span class="error">{if $Errors.postcode.message  ne ''}{$Errors.postcode.message}{/if}  </span>
+                          
+        </div>       
+    </div> 
+
+    <div class="col-xs-* col-xs-12 fieldset email">
+        <div class="form-item input-row">
+            <label for="email" class="inline">Email</label>
+            <input type="email" name="email" id="email" value="{$Post.email}" class="input-text {if $Errors.email.message  ne ''}error{/if}"  validate=""  />
+            
+            <span class="error">{if $Errors.email.message  ne ''}{$Errors.email.message}{/if}</span>
+            
+        </div>
+    </div> <!-- END Fieldset -->
+    <div class="form-item input-row ">
+        <label for="password" class="inline label">Password</label>
+        <input type="password" name="password" id="password" value="{$Post.password}" class="input-text password {if $Errors.password.message  ne ''}error{/if}"  validate=""  />
+                  
+                <span class="error">{if $Errors.password.message  ne ''}{$Errors.password.message}{/if} </span>
+                        
+    </div>
+    <!--div class="form-item input-row ">
+        <label for="cpassword" class="inline label">Confirm password</label>
+        <input type="password" name="cpassword" id="cpassword" equalTo="#adduser #password" value="{$Post.cpassword}" class="input-text password {if $Errors.cpassword.message  ne ''}error{/if}"  />
+    </div -->
+    
+    <div class="form-item terms customCheckbox">
+        <input id="check1" type="checkbox" name="tsandcs" class="checkboxLabel main_street_input {if $Errors.tsandcs.message ne ''}error{/if}" id="jgoptinyes2" value="1" {if $Post.tsandcs eq 1}checked="checked"{/if} validate="required:true" />
+        <label for="check1" class="label {if $Errors.tsandcs.message ne ''}error{/if}"><span class="hint" data-title=""></span><p> I&rsquo;ve read and accept the <a href="https://www.justgiving.com/info/terms-of-service">Terms &amp; Conditions</a></p></label>
+                  
+                <span class="error">{if $Errors.tsandcs.message  ne ''}Sorry! You must accept the terms and conditons. {/if}  </span>
+                
+    </div>
+
+
+    <input type="hidden" name="createpage" id="createpageyes" value="1" />
+    <input type="hidden" name="haveaccount" id="haveaccountno" value="0" /> 
+    <input type="hidden" name="corporate" value="{php} global $organizer_shortname; echo $organizer_shortname {/php}" />
+  	<div class="water-line-bottom"></div>
+
+
+     <div class="row">
+     <div class="col-xs-* col-xs-12 fieldset-submit water-line-top">  
+        <div class="form-item input-row centered">
+            <button class="button submit site_cta" title="Complete sign up" type="submit">
+                Take the challenge 
+            </button>
+        </div>
+        <p class="form-submit">
+            <input name="action" type="hidden" id="action" value="adduser" />
+            <input type="hidden" name="formName" value="register" />
+        </p><!-- .form-submit -->
+
+		{$nonce}
+        
+        
+	</div>
+	</div>
+    </div>  
+    </form><!-- #adduser -->
+</div>            
+
+  

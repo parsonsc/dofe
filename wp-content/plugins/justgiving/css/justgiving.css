@@ -1,0 +1,15 @@
+.ui-autocomplete {
+    background: #DCDCDC;
+    max-width: 320px !important;
+    list-style: none;
+    border-radius: 0px;
+}
+.ui-menu .ui-menu-item a:hover {
+    background: #D3D3D3;
+}
+.ui-menu .ui-menu-item a{
+    color: Black
+}
+.ui-menu-item{
+    display: block
+}

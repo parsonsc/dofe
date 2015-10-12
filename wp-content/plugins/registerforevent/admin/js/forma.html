@@ -1,0 +1,464 @@
+<style type="text/css">
+    .choice{display:none}
+    .form-row{margin-bottom: 10px; display: inline-block; width: 100%;}
+    #justgiving-form .form-row label{width: 40%; float: left}
+    #justgiving-form .form-row input,
+    #justgiving-form .form-row select
+    {width: 40%; float: left}
+    #justgiving-form .choice.submit{clear: both;}
+</style>
+<form action="#" class="form-horizontal">
+    <div id="justgiving-form">
+        <div id="jgtype" class="form-table">
+            <label for="justgiving-type">Type</label>
+            <select name="type" id="justgiving-type">
+                <option value=""></option>
+                <option value="login">Login</option>
+                <option value="logout">Logout</option>
+                <option value="register">Register</option>
+                <option value="recover-password">Forgot Password</option>
+                <option value="create-page">Create page</option>
+                <option value="eventadd">Add Event</option>
+                <option value="eventlist">List Event</option>
+                <option value="eventdetail">Detail Event</option>
+                <option value="pagelist">List pages</option>
+                <option value="pagedetail">Page details</option>
+                <option value="view-user">View user</option>
+                <option value="paypal">Pay in via Paypal</option>
+                <option value="stripe">Pay in via Stripe</option>
+                <option value="sagepay">Pay in via SagePay</option>
+                <option value="justgiving">Pay in via justgiving</option>
+                <option value="leaderboard">Leaderboard</option>
+                <option value="thankyou">Thankyou</option>
+                <option value="account">Choose if you have an account</option>
+            </select><br />
+            <small>specify the type of shortcode</small>
+        </div>
+        <div id="jgpagedetail" class="choice form-table">
+            <div class="form-row">
+                <label for="list-id">list of pages</label>
+                <select name="list" id="list-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>        
+        <div id="jgpagelist" class="choice form-table">
+            <div class="form-row">
+                <label for="detail-id">Detail of page</label>
+                <select name="detail" id="detail-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>        
+        
+       <div id="jgeventdetail" class="choice form-table">
+            <div class="form-row">
+                <label for="list-id">list of events page</label>
+                <select name="list" id="list-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="pagesize-id">pages per page</label>
+                <input type="number" name="pagesize" id="pagesize-id" value="25" />
+            </div>                         
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>        
+        <div id="jgeventlist" class="choice form-table">
+            <div class="form-row">
+                <label for="detail-id">Detail of events page</label>
+                <select name="detail" id="detail-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="pagesize-id">pages per page</label>
+                <input type="number" name="pagesize" id="pagesize-id" value="25" />
+            </div>              
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>        
+        <div id="jgeventadd" class="choice form-table">
+            <div class="form-row">
+                <label for="redirect-id">done - goto </label>
+                <select name="redirect" id="redirect-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+            </div>
+            <div class="form-row">
+                <label for="thanks-id">thanks page</label>
+                <select name="thanks" id="thanks-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+            </div>            
+            <div class="form-row">
+                <label for="paid-id">if pay and not paid goto</label>
+                <select name="paid" id="paid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>          
+        
+        <div id="jglogin" class="choice form-table">
+            <div class="form-row">
+                <label for="forgot-id">Forgot password page ID</label>
+                <select name="forgot" id="forgot-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="redirect-id">Redirect to page ID after login</label>
+                <select name="redirect" id="redirect-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">
+                <label for="create-id">Create page page ID after login (overridden by above)</label>
+                <select name="create" id="create-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">
+                <label for="choose-id">Choose whether you have an account or not page</label>
+                <select name="choose" id="choose-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>            
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>
+        
+        <div id="jglogout" class="choice form-table">
+            <div class="form-row">
+                <label for="redirect-id">Redirect to page ID after logout</label>
+                <select name="redirect" id="redirect-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="create-id">Create page page ID after logout (overridden by above)</label>
+                <select name="create" id="create-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>
+        <div id="jgregister" class="choice form-table">
+            <div class="form-row">
+                <label for="redirect-id">has JG account and no create page go here</label>
+                <select name="redirect" id="redirect-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                 
+            </div>
+            <div class="form-row">
+                <label for="create-id">no account create page go here</label>
+                <select name="create" id="create-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                 
+            </div>
+            <div class="form-row">
+                <label for="thanks-id">Thanks page</label>
+                <select name="thanks" id="thanks-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select> 
+            </div>
+            <div class="form-row">
+                <label for="login-id">has JG account and create page go here</label>
+                <select name="login" id="login-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+               
+            </div>            
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>
+        <div id="jgrecover-password" class="choice form-table">
+            <div class="form-row">
+                <label for="login-id">Login page</label>               
+                <select name="login" id="login-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">
+                <label for="home-id">home page</label>
+                
+                <select name="home" id="home-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                  
+            </div>            
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>  
+        <div id="jgcreate-page" class="choice form-table">
+            <div class="form-row">
+                <label for="logout-id">Logout </label>
+                <select name="logout" id="logout-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+            </div>        
+            <div class="form-row">
+                <label for="thanks-id">made a page goto thanks </label>
+                <select name="thanks" id="thanks-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+            </div>
+            <div class="form-row">
+                <label for="advocate-id">made a page goto advocate if advocate </label>
+                <select name="advocate" id="advocate-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>  
+            </div>            
+            <div class="form-row">
+                <label for="redirect-id">made a page no teampage goto (overwrites above)</label>
+                <select name="redirect" id="redirect-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                 
+            </div>
+            <div class="form-row">
+                <label for="teampage-id">made a page teampage goto (overwrites above)</label>
+                <select name="teampage" id="teampage-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                 
+            </div>
+            <div class="form-row">
+                <label for="paid-id">if pay to create page and not paid goto</label>
+                <select name="paid" id="paid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>  
+
+        <div id="jgview-user" class="choice form-table">
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>    
+        <div id="jgpaypal" class="choice form-table">
+            <div class="form-row">
+                <label for="redirectpaid-id">Redirect to page ID after payment</label>
+                <select name="redirectpaid" id="redirectpaid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>  
+        <div id="jgstripe" class="choice form-table">
+            <div class="form-row">
+                <label for="redirectpaid-id">Redirect to page ID after payment</label>
+                <select name="redirectpaid" id="redirectpaid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>          
+        
+        <div id="jgsagepay" class="choice form-table">
+            <div class="form-row">
+                <label for="redirectpaid-id">Redirect to page ID after payment</label>
+                <select name="redirectpaid" id="redirectpaid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>                
+            </div>
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>         
+        <div id="jgjustgiving" class="choice form-table">
+            <div class="form-row">
+                <label for="redirectpaid-id">Redirect to page ID after payment</label>
+                <select name="redirectpaid" id="redirectpaid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>
+            <div class="form-row">        
+                <label for="loggedin-id">Must be logged in to use ?</label>
+                <input type="checkbox" name="loggedin" id="loggedin-id" value="1" />
+            </div>
+            <div class="form-row">        
+                <label for="pageurl-id">if not logged in then the default page url to pay to</label>
+                <select name="pageurl" id="pageurl-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>              
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>  
+        <div id="jgleaderboard" class="choice form-table">
+            <div class="form-row">        
+                <label for="orderby-id">Order By</label>
+                <select name="orderby" id="orderby-id" >
+                    <option value=""></option>
+                    <option value="teamname">Team name</option>
+                    <option value="teamtarget">Target</option>
+                    <option value="numMembers">number of members</option>
+                    <option value="raisedSoFar">Amount raised so far</option>
+                </select>
+            </div> 
+            <div class="form-row">        
+                <label for="order-id">Order</label>
+                <select name="order" id="order-id">
+                    <option value=""></option>
+                    <option value="desc">Descending</option>
+                    <option value="asc">Ascending</option>
+                </select>
+            </div>    
+            <div class="form-row">
+                <label for="limit-id">Limit</label>
+                <input type="number" step="1" min="0" name="limit" id="limit-id" value="" />
+            </div>            
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>  
+        <div id="jgthankyou" class="choice form-table">
+            <div class="form-row">
+                <label for="logout-id">logout page</label>
+                <select name="logout" id="logout-id">
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div> 
+            <div class="form-row">
+                <label for="paid-id">if pay to complete and not paid goto</label>
+                <select name="paid" id="paid-id" >
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>   
+            </div>            
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>   
+        <div id="jgaccount" class="choice form-table">
+            <div class="form-row">
+                <label for="login-id">login page</label>
+                <select name="login" id="login-id">
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>  
+            <div class="form-row">
+                <label for="register-id">register page</label>
+                <select name="register" id="register-id">
+                    {{#pages}}
+                    <option value='{{ID}}'>{{title}}</option> 
+                    {{/pages}}
+                </select>
+            </div>              
+            <div class="form-row">        
+                <label for="template-id">Template</label>
+                <input type="text" name="template" id="template-id" value="" />
+            </div>             
+        </div>   
+
+        
+        <p class="choice submit">
+            <input type="button" id="justgiving-submit" onclick="I_Insert();I_Close();" class="button-primary" value="{{jgADDclose}}" name="submit" />
+        </p>
+    </div>
+</form>

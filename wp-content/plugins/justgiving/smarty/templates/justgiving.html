@@ -1,0 +1,14 @@
+    <form action="" id="justgiving" method="post">
+        <input type="hidden" name="action" value="process" />
+        <input type="hidden" name="currency_code" value="GBP" />
+        <input type="hidden" name="invoice" value="{$Invoice.invoiceid}" />
+        <div class="form-item">
+            <label>Amount<span class="error">{$errorMark}</span></label>
+            <input type="number" step="any" name="product_amount" value="{$Settings.payamount}" class="input-text" validate="required:true" />
+        </div>
+        <div class="form-item">
+            <button class="button" title="Give to the cause" type="submit" name="give_justgiving" id="give_justgiving">
+                Give
+            </button>
+        </div>
+    </form>
